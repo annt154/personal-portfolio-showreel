@@ -1,0 +1,36 @@
+(() => {
+ const item=DATA.animation.find(x=>x.id==='wof');
+ item.title='Water, out of form';item.year='2026';item.subtitle='Public Screen Motion';
+ // Only confirmed source material is shown; final and exhibition assets can be added here.
+ const m=window.WATER_MEDIA=Object.assign(window.WATER_MEDIA||{},{finalVideo:'https://youtu.be/rxcxt6Gfa28'});
+ item.video=m.finalVideo;
+ const root='assets/works/water-out-of-form/';
+ const p=s=>`<p class="case-copy">${s}</p>`;
+ const section=(title,content,cls='')=>`<section class="case-section ${cls}"><h2>${title}</h2>${content}</section>`;
+ const img=(src,caption)=>src?`<figure class="case-figure"><img src="${src}" alt="${caption}" loading="lazy"><figcaption>${caption}</figcaption></figure>`:'';
+ const video=(src,label,loop=false)=>{
+  if(!src)return '';
+  const embed=projectVideoEmbed(src);
+  return `<div class="case-video">${embed?`<iframe src="${embed}?controls=1&rel=0" title="${label}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`:`<video src="${src}" aria-label="${label}" controls playsinline preload="metadata" ${loop?'loop muted':''}></video>`}</div>`;
+ };
+ const info=[['Created by','Thuy An Ngo and Julie Noh'],['My contribution','Concept Development, Filming, Motion Graphics, Editing and Compositing'],['Tools','After Effects and Premiere Pro'],['Outcome','Selected for a one-week public screening at Fed Square']];
+ const original=window.renderDossier;
+ window.renderDossier=(project,cat)=>{
+  if(project.id!=='wof')return original(project,cat);
+  const t=document.createElement('template');t.innerHTML=original(project,cat);
+  const paper=t.content.querySelector('.article-paper');paper.classList.add('editorial-paper');
+  const hero=video(m.exhibitionVideo||m.finalVideo,'Water, out of form — complete work')||img(m.finalStill,'Water and numerical imagery')||'<div class="water-film-pending" role="status">Final film to be added</div>';
+  let html=`<article class="case-study water-case"><header class="case-hero">${hero}<div class="case-hero-title"><span>2026</span><h1>Water, out of form</h1><span>Public Screen Motion</span></div></header><div class="case-under"><p>Digital Facades · Motion Design</p><button class="dossier-back" onclick="backToIndex('animation')">← album</button></div>${img(m.exhibitionPhoto,'Digital Facades, Fed Square')}<dl class="case-information">${info.map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>`;
+  html+=section('Overview',`<div class="${m.finalStill?'case-two':'water-narrow'}"><div>${p('Water, out of form is an experimental motion work created by Thuy An Ngo and Julie Noh for the Digital Facades screen at Fed Square. The project responds to Moore’s Paradox through the visual tension between numbers and water.')}</div>${img(m.finalStill,'Water and numerical imagery')}</div>`);
+  html+=section('Understanding the paradox',p('Moore’s Paradox describes a statement in which what a person asserts conflicts with what they claim to believe. Each part may be understandable on its own, but placing them together creates a contradiction.')+`<div class="water-paradox"><video src="${root}water-loop.webm" autoplay muted loop playsinline aria-hidden="true"></video><div><h3>CERTAINTY</h3><span>Numbers · Fixed · Measurable · Logical</span></div><span>versus</span><div><h3>BELIEF</h3><span>Water · Fluid · Unstable · Changing</span></div></div>`);
+  html+=section('Concept: numbers and water',video(m.numericLoop,'Numerical forms disturbed by water',true)+p('Numbers were selected to represent certainty because they are usually fixed, exact and measurable. Water was used to suggest emotion and instability because it constantly moves, changes shape and responds to its surroundings.')+p('When fixed numerical forms are placed inside moving water, their meaning becomes visually unstable. This contrast became a metaphor for the conflict between certainty, expression and belief.'));
+  html+=section('Visual experiments',img(root+'colour-test.jpg','Colour and distortion experiment')+`<div class="case-grid">${img(root+'raw.jpg','Original water footage')}${img(m.reflections,'Reflections and distorted surfaces')}${img(m.numericTest,'Numerical motion experiment')}</div>`+p('The visual language developed through experiments with filmed water, reflections, numeric forms and digital distortion.'),'case-process');
+  html+=section('Filming and material collection',video(root+'water-loop.webm','Original filmed water — source material',true)+p('Different forms of water were filmed and collected to explore reflection, transparency, distortion and movement. The footage became the physical material through which the fixed numerical forms could be disrupted.'));
+  html+=section('Motion and compositing',`<div class="case-grid">${img(m.breakdownWater,'Water footage')}${img(m.numericLayer,'Numeric motion layer')}${img(m.composite,'Final composite')}</div>`+p('The filmed material and motion graphics were combined in After Effects. Editing, layering, timing and compositing were used to make the numbers appear embedded within—or destabilised by—the movement of water.'),'case-process');
+  html+=section('Designing for a public screen',img(m.exhibitionPhoto,'Digital Facades at Fed Square')+img(m.architecture,'Architecture and viewing distance')+p('The timing, scale and composition were developed for an architectural screen rather than a personal device. Large shapes and sustained movement allowed the work to remain visible from different distances, while the surrounding public space became part of the viewing experience.')+'<div class="water-labels"><span>Architectural Scale</span><span>Multiple Viewing Distances</span><span>Public Environment</span></div>');
+  html+=section('Final outcome',video(m.finalVideo,'Water, out of form — complete animation')+`<div class="case-grid">${img(m.fixed,'Fixed Form')}${img(m.unstable,'Visual Instability')}${img(m.outOfForm,'Out of Form')}</div><blockquote class="water-outcome">The completed work was selected for a one-week public screening at Fed Square.</blockquote>`);
+  html+=section('Reflection',p('This project developed my skills in filming, motion graphics, editing and compositing. It also strengthened my experience in collaboration and taught me how an abstract theoretical idea could be translated into a clear visual system.')+p('Designing for Fed Square changed how I considered scale, pacing and viewing distance. The work needed to function not only as a video, but as part of an architectural and public environment.'),'case-reflection');
+  html+=section('Credits',p('Created by Thuy An Ngo and Julie Noh')+p('My contribution: Concept Development, Filming, Motion Graphics, Editing and Compositing')+p('Tools: Adobe After Effects and Adobe Premiere Pro')+p('Context: Digital Facades, RMIT University')+p('Outcome: Public screening at Fed Square, 2026')+'<p class="water-reference">Research: <a href="https://plato.stanford.edu/entries/assertion/" target="_blank" rel="noopener noreferrer">Stanford Encyclopedia of Philosophy — Assertion and Moore’s Paradox</a></p><p class="water-reference">Music, sound and external material credits: to be confirmed.</p>','case-credits');
+  paper.innerHTML=html+'</article>';return t.innerHTML;
+ };
+})();

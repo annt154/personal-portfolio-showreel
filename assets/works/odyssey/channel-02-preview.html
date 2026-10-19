@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><base href="https://annt154.github.io/assignment3/"><style>* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* base body styling */
+body {
+  background: #f5f5dc;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  background: rgb(255, 246, 246);
+  padding: 30px;
+  border-radius: 15px;
+}
+
+/* Title styling */
+h1 {
+  text-align: center;
+  color: #ff69b4;
+  margin-bottom: 30px;
+}
+
+/* Layout */
+.game-layout {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+/* This is for the side pannels included items*/
+.side {
+  width: 350px;
+}
+
+/* styling the container for each item category */
+.group {
+  margin-bottom: 23px; /* space in between groups */
+}
+
+/* styling the group title, so for each group/catagory of clothes, there gonna be a title so the player will know what is that and maybe not redrag again. */
+.group-title {
+  font-size: 12px;
+  color: #000000;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+/* Grid layout for items within each group */
+.items {
+  display: flex;
+  grid-template-columns: repeat(4, 1fr); /* 4 cột */
+  gap: 10px;
+}
+
+/* Each draggable item container/box styling */
+.item {
+  border: 1px;
+  border-radius: 8px;
+  cursor: grab;
+  transition: all 0.2s;
+}
+
+/* Hover effect so when hovering to a particular item on the side bar, the size gonna change so enhancing interaction experience */
+.item:hover {
+  transform: scale(1.1);
+  border-color: #ff69b4;
+  box-shadow: 0 2px 8px rgba(255, 105, 180, 0.3);
+}
+
+/* Visual feedback when dragging */
+.item:active {
+  cursor: grabbing;
+}
+
+/* styling the image inside the item container */
+.item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* Canvas/ droping item area */
+.canvas {
+  width: 500px;
+  height: 600px;
+  background: #fffaf0;
+  border: 2px solid #ffb6c1;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* main figure */
+.character-main {
+  max-width: 80%;
+  max-height: 90%;
+  position: absolute;
+  z-index: 0; /* set to 0 to make sure it always laying underneath all of the items */
+  pointer-events: none; /* Does not block drag & drop events on the canvas */
+}
+
+/* Dropped image container on the canvas */
+.dropped-img {
+  position: absolute;
+  cursor: move;
+  border: 2px solid transparent;
+  transition: border 0.2s;
+}
+
+/* Hover effect on dropped items, so when hover to a particular item display on the canvas/dropped items, it gonna show boder */
+.dropped-img:hover {
+  border-color: #ff69b4;
+}
+
+/* Image inside the dropped container */
+.dropped-img img {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+/* X button */
+.dropped-img .remove {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: red;
+  color: white;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  display: none;
+}
+
+/* styling the X button on the side pannels */
+.item {
+  position: relative; /* Cần có để đặt nút X */
+}
+
+.item .remove-item {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 22px;
+  height: 22px;
+  background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
+  color: white;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  display: none; /* hide the default template */
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4);
+  z-index: 20; /* Ensure it's on top */
+  transition: all 0.2s;
+}
+
+/* Display the 'X' button only when the item has been used */
+.item.used .remove-item {
+  display: flex;
+}
+
+.item.used {
+  opacity: 0.5; /* lower the opacity of used items like marking it as used */
+  position: relative;
+}
+
+/* Hover effect for the X button */
+.remove-item:hover {
+  transform: scale(1.2) rotate(90deg);
+  background: #ff1744;
+}
+
+/* General styling for Back and Reset buttons */
+.btn {
+  background: linear-gradient(135deg, #ff6b9d 0%, #ffa8c5 100%);
+  border: 3px solid white;
+  border-radius: 50%;
+  padding: 10px; /* spacing around the img */
+}
+
+.btn:hover {
+  background: #ff1493;
+  /*  styling when hovering these buttons */
+}
+
+/* Music button styling */
+.music-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #ff6b9d 0%, #ffa8c5 100%);
+  border: 3px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
+  transition: all 0.3s;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px; /* spacing around the img */
+}
+
+/* Image inside the music button */
+.music-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* keep the og size of the imgs */
+  pointer-events: none;
+}
+
+/* styling hover and active effects for the music button */
+.music-btn:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 6px 20px rgba(255, 107, 157, 0.6);
+}
+
+.music-btn:active {
+  transform: scale(0.95);
+}
+
+/* styling when the music is muted */
+.music-btn.muted {
+  background: linear-gradient(135deg, #999 0%, #ccc 100%);
+  opacity: 0.7;
+}
+ .music-btn{display:none} *,*::before,*::after{animation:none!important;pointer-events:none!important} body{overflow:hidden} </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+    <title>Dress up game</title>
+    
+  </head>
+  <body>
+    
+    <button id="musicBtn" class="music-btn" onclick="toggleMusic()">
+  <img src="volume-up.png" alt="Music" id="musicIcon">
+</button>
+
+<!-- Title of the website -->
+<div class="container">
+  <h1> Dress Up Game </h1>
+  <div class="game-layout">
+
+    
+<!-- Left Panel -->
+  <div class="side">
+
+    <!-- Hair section -->
+    <div class="group">
+    <div class="group-title">Hair</div>
+
+    <div class="items">
+    <!-- 
+      dragagble : to active dragging items
+    data-x, data-y: To arrange the position of items after dragging because the size exported of each item is different so I make this the real time rearrange the items
+    data-width, data-height: is the size after drop into the figure
+    I add for each element because they all different sizing when I exported after drawing so by doing this, I can easily changing the sizing and placement of items.
+    -->
+    <div class="item" draggable="true" data-x="163" data-y="24" data-width="150" data-height="150">
+      <img src="img/hair1.PNG" alt="">
+    </div>
+
+    <div class="item" draggable="true" data-x="175" data-y="17" data-width="130" data-height="150">
+      <img src="img/hair2.PNG" alt="">
+    </div>
+
+    <div class="item" draggable="true" data-x="175" data-y="13" data-width="130" data-height="140">
+      <img src="img/hair3.PNG" alt="">
+    </div>
+
+    <div class="item" draggable="true" data-x="170" data-y="14" data-width="135" data-height="140">
+      <img src="img/hair4.PNG" alt="">
+    </div>
+
+    <div class="item" draggable="true" data-x="168" data-y="11" data-width="150" data-height="150">
+      <img src="img/hair5.PNG" alt="">
+    </div>
+  </div>
+</div>
+
+    <!-- Top Section -->
+    <div class="group">
+      <div class="group-title">Tops</div>
+        <div class="items">
+          <div class="item" draggable="true" data-x="128" data-y="50" data-width="240" data-height="340">
+            <img src="img/top1.PNG" alt="">
+          </div>
+
+          <div class="item" draggable="true" data-x="128" data-y="50" data-width="240" data-height="340">
+            <img src="img/top2.PNG" alt="">
+          </div>
+
+          <div class="item" draggable="true" data-x="128" data-y="50" data-width="240" data-height="340">
+            <img src="img/top3.PNG" alt="">
+          </div>
+
+          <div class="item" draggable="true" data-x="128" data-y="50" data-width="240" data-height="340">
+            <img src="img/top4.PNG" alt="">
+          </div>
+                       
+          <div class="item" draggable="true" data-x="128" data-y="50" data-width="240" data-height="340">
+            <img src="img/top5.PNG" alt="">
+          </div>
+                        
+          <div class="item" draggable="true" data-x="128" data-y="50" data-width="240" data-height="340">
+            <img src="img/top6.PNG" alt="">
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Section -->
+        <div class="group">
+          <div class="group-title">Bottoms</div>
+          <div class="items">
+
+            <div class="item" draggable="true" data-x="140" data-y="200" data-width="230" data-height="330">
+              <img src="img/bottom1.PNG" alt="">
+            </div>
+
+            <div class="item" draggable="true" data-x="143" data-y="194" data-width="220" data-height="330">
+              <img src="img/bottom2.PNG" alt="">
+            </div>
+
+            <div class="item" draggable="true" data-x="143" data-y="201" data-width="220" data-height="330">
+              <img src="img/bottom3.PNG" alt="">
+            </div>
+
+            <div class="item" draggable="true" data-x="143" data-y="201" data-width="220" data-height="330">
+              <img src="img/bottom4.PNG" alt="">
+            </div>
+
+            <div class="item" draggable="true" data-x="143" data-y="201" data-width="220" data-height="330">
+              <img src="img/bottom5.PNG" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  <!-- Midle/Main pannel -->
+    <div class="canvas" id="canvas">
+
+  <!-- I put the img source of the main figure i drew in src part -->
+    <img src="img/figure.PNG" alt="Character" class="character-main" id="characterMain">
+    </div>
+
+
+  <!-- Right Pannel -->
+    <div class="side">
+
+      <!-- Accesory Section -->
+      <div class="group">
+        <div class="group-title">ACCESSORIES</div>
+          <div class="items">
+          <div class="item" draggable="true" data-x="130" data-y="60" data-width="230" data-height="280">
+            <img src="img/acc1.PNG" alt="">
+          </div>
+
+          <div class="item" draggable="true" data-x="130" data-y="60" data-width="230" data-height="280">
+            <img src="img/acc2.PNG" alt="">
+          </div>
+
+          <div class="item" draggable="true" data-x="130" data-y="60" data-width="230" data-height="280">
+            <img src="img/acc3.PNG" alt="">
+          </div>
+
+          <div class="item" draggable="true" data-x="130" data-y="60" data-width="230" data-height="280">
+            <img src="img/acc4.PNG" alt="">
+          </div>
+      </div>
+    </div>
+
+      <!-- Dresses and Outerwear section -->
+      <div class="group">
+        <div class="group-title">Dresses</div>
+          <div class="items">
+          <div class="item" draggable="true" data-x="128" data-y="50" data-width="240" data-height="340">
+            <img src="img/out1.PNG" alt="">
+          </div>
+
+          <div class="item" draggable="true" data-x="128" data-y="50" data-width="240" data-height="340">
+            <img src="img/out2.PNG" alt="">
+          </div>
+
+          <div class="item" draggable="true" data-x="128" data-y="50" data-width="240" data-height="340">
+            <img src="img/out3.PNG" alt="">
+          </div>
+
+          <div class="item" draggable="true" data-x="128" data-y="50" data-width="240" data-height="340">
+            <img src="img/out4.PNG" alt="">
+          </div>
+
+          <div class="item" draggable="true" data-x="128" data-y="50" data-width="240" data-height="340">
+            <img src="img/out5.PNG" alt="">
+          </div>
+      </div>
+    </div>
+
+    <!-- Shoes Section -->
+    <div class="group">
+      <div class="group-title">Shoes</div>
+        <div class="items">
+        <div class="item" draggable="true" data-x="161" data-y="380" data-width="200" data-height="230">
+          <img src="img/shoes1.PNG" alt="">
+        </div>
+
+        <div class="item" draggable="true" data-x="161" data-y="380" data-width="200" data-height="230">
+          <img src="img/shoes2.PNG" alt="">
+        </div>
+
+        <div class="item" draggable="true" data-x="161" data-y="380" data-width="200" data-height="230">
+          <img src="img/shoes3.PNG" alt="">
+        </div>
+
+        <div class="item" draggable="true" data-x="161" data-y="380" data-width="200" data-height="230">
+          <img src="img/shoes4.PNG" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- Go back to the previous action and reset button inorder the player want to go back or there are too many layers or that they are not satisfy with the outcome that they want to reset to redo -->
+  <div class="buttons">
+    <button class="btn" onclick="goBack()"> Back </button>
+    <button class="btn" onclick="clearCanvas()"> Reset </button>
+  </div>
+  </div>
+
+    <!-- Footer Section to cite what I have used that not belong to me -->
+    <footer> 
+      <p>&copy; 2024 Media Player Website. All rights reserved.</p> </div>
+      <a href="https://icons8.com/icon/59862/play">Play</a> icon by
+      <a href="https://icons8.com">Icons8</a>
+      <a href="https://icons8.com/icon/61012/pause">Pause</a> icon by
+      <a href="https://icons8.com">Icons8</a>
+      <a href="h9c51ecca9d9c891ea757919d51958f60.jpg">Icons8</a> images by
+      <a href="https://www.pinterest.com/nhduong1978/pins/">Image4</a>
+      <a href="https://www.pinterest.com/pin/754493743866012140/">Image5</a>
+      <a href="https://www.pinterest.com/pin/754493743866004210/">Image1</a>
+       <a href="https://www.pinterest.com/pin/754493743866012431/">Image6</a>
+    </footer>
+
+    
+  </body>
+</html>

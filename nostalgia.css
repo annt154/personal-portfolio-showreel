@@ -1,0 +1,88 @@
+﻿/* Nostalgic stationery details; existing layouts and typefaces stay intact. */
+#overlay {
+  --journal-pink:#edc8cd;
+  --journal-mint:#dce9db;
+  --journal-gold:#b69b76;
+  --journal-flower:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 24'%3E%3Cg fill='none' stroke='%23b69b76' stroke-width='.8'%3E%3Cpath d='M1 12h15m28 0h15M7 9l3 3-3 3m46-6-3 3 3 3'/%3E%3C/g%3E%3Cg fill='%23edc8cd' stroke='%23c39998' stroke-width='.6'%3E%3Cellipse cx='30' cy='7' rx='4' ry='5'/%3E%3Cellipse cx='25' cy='11' rx='5' ry='4'/%3E%3Cellipse cx='35' cy='11' rx='5' ry='4'/%3E%3Cellipse cx='27' cy='16' rx='4' ry='5'/%3E%3Cellipse cx='33' cy='16' rx='4' ry='5'/%3E%3C/g%3E%3Ccircle cx='30' cy='12' r='3' fill='%23fff4ca'/%3E%3C/svg%3E");
+}
+#overlay .overlay-inner :is(.album-categories,.collection-stamps,.article-rail,.article-index) {
+  background-color:#fffaf0;
+  border:1px solid #c5ad8b;
+  border-radius:12px 12px 3px 3px;
+}
+#overlay .overlay-inner :is(.album-categories h2,.collection-stamps h2,.article-rail-title,.article-index-title) {
+  position:relative;
+  background:radial-gradient(circle,#fff9 1px,transparent 1.6px) 0 0/9px 9px,linear-gradient(105deg,#f4d8d9,var(--panel-tint),#f8e9d3)!important;
+  border-bottom:3px double #c6ab87;
+  box-shadow:inset 0 3px 0 #fff9;
+  text-shadow:0 1px #fff9;
+}
+#overlay .overlay-inner :is(.album-categories h2,.collection-stamps h2)::after {
+  content:'';position:absolute;bottom:3px;left:calc(50% - 24px);width:48px;height:15px;
+  background:var(--journal-flower) center/contain no-repeat;pointer-events:none;
+}
+#overlay .album-mode .album-categories button {
+  border-bottom:1px dotted #bfa78970;
+  background:linear-gradient(90deg,#fff7ed88,transparent);
+  transition:background .2s;
+}
+#overlay .album-mode .album-categories button[aria-current=page] {
+  background:linear-gradient(90deg,#edc8cd90,#fff1db88);
+  border-left:3px solid #b68c89;
+}
+#overlay .album-mode .album-categories button:hover {background:#f6e1dc}
+#overlay .album-mode .collection-stamps .album-card {
+  border:1px dotted #c5ad8b;
+  border-radius:3px;
+  background:linear-gradient(115deg,#fffdf8,#f8f1e5);
+}
+#overlay .album-mode .collection-stamps .album-card[aria-pressed=true] {
+  outline:1px solid #bba391;background:linear-gradient(110deg,#f7dfdf,#f4eddb);
+}
+#overlay .album-mode .stamp-pager {
+  border-top:3px double #cbb695;
+  background:radial-gradient(circle,#c8ab8d55 1px,transparent 1.5px) 0 0/9px 9px,#fff7e8;
+}
+#overlay .collection-controls {position:relative}
+#overlay .collection-controls::after {
+  content:'';position:absolute;width:66px;height:26px;left:calc(50% - 33px);top:9px;
+  background:var(--journal-flower) center/contain no-repeat;pointer-events:none;
+}
+#overlay .overlay-inner.album-mode .collection-controls button {
+  background:linear-gradient(#fff7cf,#faedb7);border:1px solid #c2a77f;
+  box-shadow:inset 0 0 0 3px #fff9;border-radius:8px;
+}
+/* Fine stationery ribbons separate entries without putting ornament on the work. */
+#overlay .article-paper :is(.case-section>h2,.sun-section>h2,.dossier-entry-head) {
+  position:relative;padding:10px 16px 12px 20px;
+  border-block:1px dotted #b69b7680;border-left:3px solid #d6a7ab;
+  background:linear-gradient(90deg,#f8e0dcd9,#fff7e9a0 65%,transparent);
+  color:#493c2c;
+}
+#overlay .article-paper :is(.case-section:nth-of-type(even)>h2,.sun-section:nth-of-type(even)>h2) {
+  border-left-color:#9cab96;background:linear-gradient(90deg,#e1ebddd9,#fff7e9a0 65%,transparent);
+}
+#overlay .article-paper :is(.case-section>h2,.sun-section>h2)::after {
+  content:'';display:inline-block;width:52px;height:23px;margin-left:16px;vertical-align:middle;
+  background:var(--journal-flower) center/contain no-repeat;
+}
+#overlay .article-paper :is(.case-information,.sun-info) {
+  padding:24px 20px;background:radial-gradient(circle,#cfb79730 1px,transparent 1.5px) 0 0/10px 10px,#fff7e8d9;
+  border-block:3px double #c9b391;box-shadow:0 5px 0 #fff7e84d;
+}
+#overlay .article-paper :is(.case-information dt,.sun-info dt) {color:#8e6261}
+#overlay .article-paper :is(.case-process,.case-inset) {
+  border:1px dashed #bba17c;background:#fff5df20;
+  box-shadow:inset 0 0 0 4px #fff9e52b;
+}
+#overlay .article-paper :is(.case-figure figcaption,.sun-case figcaption) {
+  padding-bottom:8px;border-bottom:1px dotted #b69b7680;
+}
+#overlay .article-paper .case-credits {border-top:3px double #c0a681}
+#overlay .article-paper .selection-frame {border-radius:0!important}
+#overlay .article-paper .sun-tarot h2 {background:none;border-color:#dcc1a866;color:inherit}
+@media(max-width:750px) {
+  #overlay .collection-controls::after {display:none}
+  #overlay .article-paper :is(.case-section>h2,.sun-section>h2)::after {width:34px;margin-left:8px}
+  #overlay .article-paper :is(.case-information,.sun-info) {padding:18px 12px}
+}

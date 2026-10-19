@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" fill="none">
+  <defs>
+    <radialGradient id="butter" cx=".42" cy=".32" r=".8">
+      <stop stop-color="#fff7c6"/>
+      <stop offset="1" stop-color="#f5dfa0"/>
+    </radialGradient>
+  </defs>
+  <path fill="url(#butter)" d="M155 576C65 595 22 526 61 462C-2 414 17 320 88 294C41 224 93 142 178 145C176 63 276 31 341 80C384 5 492 10 532 75C607 13 701 46 720 120C808 85 882 137 878 213C975 219 1010 310 950 374C1011 448 965 544 875 541C854 626 760 656 690 605C635 686 527 687 471 629C396 689 294 662 267 596C223 630 173 616 155 576Z"/>
+  <ellipse cx="129" cy="638" rx="27" ry="23" fill="#f6e2a7"/>
+  <ellipse cx="64" cy="679" rx="14" ry="12" fill="#f6e2a7"/>
+</svg>

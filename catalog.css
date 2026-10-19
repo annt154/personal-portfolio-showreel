@@ -1,0 +1,108 @@
+#overlay .blog-article{column-gap:clamp(28px,3.3vw,56px)}
+#overlay .article-body{padding-inline:8px}
+#overlay[data-category="art"] .overlay-cat .illustrated-title{filter:saturate(.42) brightness(1.16)}
+#overlay .article-mode .crt-topline,#overlay .article-mode .crt-bottomline{display:none}
+#overlay:has(.catalog-mode){overflow:auto;display:none;padding:24px 4vw 48px!important}
+#overlay.open:has(.catalog-mode){display:block}
+#overlay .catalog-mode{width:min(1280px,100%);margin:0 auto;transform:none}
+#overlay .catalog-mode .overlay-head{margin-bottom:24px}
+#overlay .catalog-mode .overlay-masthead{padding:0}
+#overlay .catalog-mode .overlay-cat .illustrated-title{width:min(440px,70vw)}
+.catalog-stage{position:relative;margin:0 auto;max-width:1180px;padding-left:156px}
+.catalog-nav{position:absolute;left:0;top:28px;z-index:3;width:170px;padding:12px 0;background:color-mix(in srgb,var(--page-color) 85%,transparent);backdrop-filter:blur(12px);border:1px solid #7e6b4d66;box-shadow:3px 4px 15px #30241618;border-radius:4px}
+#overlay .catalog-nav button{display:block;width:100%;padding:12px 15px;border:0;border-left:3px solid transparent;background:transparent;color:#4e402d;font:19px/1.3 "Biro Script",cursive;text-align:left;cursor:pointer}
+#overlay .catalog-nav button[aria-current="page"],#overlay .catalog-nav button:hover{background:#fff4cc80;border-left-color:#9a794e}
+.catalog-main{min-width:0}
+.catalog-hero{display:block;position:relative;width:100%;aspect-ratio:16/9;max-height:58vh;background:#161510;border:4px solid #8e7c60;padding:0;overflow:hidden;cursor:pointer;text-align:left}
+.catalog-hero>img{display:block;width:100%;height:100%;object-fit:cover}
+#overlay[data-category="graphic"] .catalog-hero>img,#overlay[data-category="ui"] .catalog-hero>img{object-fit:contain}
+.catalog-caption{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:6% 5%;gap:12px;background:linear-gradient(transparent 25%,#000b);color:#fffbea}
+#overlay .catalog-caption strong{font:clamp(26px,3vw,46px)/1.2 "Biro Script",cursive;font-weight:400;max-width:95%}
+#overlay .catalog-caption small,#overlay .catalog-caption>span{font:18px/1.3 "Handwriting Numbers","Biro Script",cursive}
+.catalog-thumbnails{display:flex;gap:12px;overflow-x:auto;padding:18px 2px 10px;scrollbar-width:thin}
+#overlay .catalog-thumbnails button{flex:0 0 155px;min-width:0;padding:0;border:2px solid transparent;background:#fff7dfb8;color:#473b2d;cursor:pointer;text-align:left;transition:transform .2s,border-color .2s}
+.catalog-thumbnails img{width:100%;height:86px;object-fit:cover;display:block}
+.catalog-thumbnails span{display:block;padding:7px;font:16px/1.3 "Daisy Wheel",sans-serif}
+#overlay .catalog-thumbnails button[aria-current="true"]{border-color:#8c6946}
+#overlay .catalog-thumbnails button:hover{transform:translateY(-3px)}
+.catalog-stage button:focus-visible,.about-socials a:focus-visible{outline:3px solid #9d7446;outline-offset:3px}
+#abt.about-revealed .about-cloud{pointer-events:auto}
+#abt .software-icons{display:grid;grid-template-columns:repeat(3,48px);gap:8px;justify-content:center}
+#abt .software-icons .app-icon{width:48px;height:48px;font-size:27px}
+#abt .software-icons .photoshop{background:#08283c;color:#59c5ff}
+#abt .software-icons .dragonframe{background:#25282b;color:#ecf2e5}
+#abt .software-icons .procreate{background:linear-gradient(135deg,#201e29 35%,#9562bd 60%,#e879a0 78%,#f5b661);color:#fff}
+#abt .cloud-content{gap:8px}
+.about-socials{display:flex;gap:15px;justify-content:center;margin-top:8px}
+.about-socials a{display:grid;place-items:center;width:37px;height:37px;background:#fff9de;border:1px solid #b9955c;border-radius:50%;color:#785b33;transition:transform .2s}
+.about-socials a:hover{transform:translateY(-3px)}
+.about-socials svg{width:22px;height:22px;fill:currentColor}
+.showreel-space{min-height:45vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff8e5a0;border:1px solid #a88c61}
+.showreel-space>span{font-size:70px;color:#92794d}
+@media(max-width:700px){
+ #overlay .blog-article{column-gap:16px}
+ #overlay .article-body{padding-inline:0}
+ .catalog-stage{padding-left:0}
+ .catalog-nav{position:relative;inset:auto;width:100%;display:flex;overflow-x:auto;padding:4px;margin-bottom:12px;box-sizing:border-box}
+ #overlay .catalog-nav button{width:auto;flex:0 0 auto;padding:9px 12px;font-size:17px}
+ .catalog-hero{max-height:none;aspect-ratio:4/3}
+ .catalog-thumbnails button{flex-basis:130px!important}
+ .catalog-caption{gap:7px}
+ .about-socials{gap:10px;margin-top:4px}
+ .about-socials a{width:30px;height:30px}
+ #abt .software-icons{grid-template-columns:repeat(3,34px);gap:5px}
+ #abt .software-icons .app-icon{width:34px;height:34px;font-size:21px}
+}
+@media(prefers-reduced-motion:reduce){.catalog-thumbnails button,.about-socials a{transition:none}}
+
+/* Framed collection preview: navigation and thumbnails sit on the image. */
+#overlay:has(.catalog-mode){padding:18px 3vw 32px!important}
+#overlay .catalog-mode{width:min(1600px,100%)}
+#overlay .catalog-mode .overlay-head{margin-bottom:16px}
+#overlay .catalog-mode .overlay-cat .illustrated-title{width:min(390px,60vw)}
+#overlay .overlay-inner .overlay-close{position:fixed;top:18px;left:22px;z-index:30;width:48px;height:48px;padding:0;margin:0;display:grid;place-items:center;font:36px/1 Arial,sans-serif!important;text-decoration:none!important;border:0;background:transparent;letter-spacing:0}
+.catalog-stage{max-width:none;padding:0;border:1px solid #fff5da;box-shadow:0 0 0 4px #8e7c60,0 12px 30px #30241630}
+.catalog-hero{height:76vh;min-height:450px;max-height:900px;aspect-ratio:auto;border:0}
+.catalog-nav{inset:0 auto 0 0;width:150px;padding:65px 0 110px;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(90deg,#000b,#0005);backdrop-filter:none;border:0;border-right:1px solid #fff8;border-radius:0;box-shadow:none}
+#overlay .catalog-nav button{color:#fff!important;font-size:20px;padding:17px 16px;border-left:2px solid transparent;text-shadow:0 1px 4px #000}
+#overlay .catalog-nav button[aria-current="page"],#overlay .catalog-nav button:hover{background:#ffffff18;border-left-color:#fff}
+.catalog-caption{padding:40px 45px 175px 190px;background:linear-gradient(0deg,#000e,transparent 80%);gap:14px}
+#overlay .catalog-caption strong{font-size:clamp(30px,3.6vw,58px);max-width:100%}
+#overlay .catalog-caption small,#overlay .catalog-caption>span{font-size:22px}
+.catalog-thumbnails{position:absolute;z-index:4;bottom:24px;left:190px;right:100px;padding:3px;gap:0;border:1px solid #fff9;background:#0005;scrollbar-color:#fff8 #0003}
+#overlay .catalog-thumbnails button{flex:0 0 165px;background:#0007;color:#fff;border:2px solid transparent;border-right:1px solid #fff6;position:relative}
+.catalog-thumbnails img{height:85px}
+.catalog-thumbnails span{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:5px 7px}
+#overlay .catalog-thumbnails button[aria-current="true"]{border:2px solid #fff}
+.catalog-arrows{position:absolute;left:22px;bottom:28px;z-index:5;display:flex;gap:10px}
+#overlay .catalog-arrows button{width:46px;height:42px;border:1px solid #fff9;color:white;background:#0004;font:27px/1 Arial;cursor:pointer}
+#overlay .catalog-arrows button:hover{background:#fff3}
+#overlay .catalog-arrows button:disabled{opacity:.35;cursor:default}
+.catalog-stage button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+#abt .software-icons .app-icon img{width:100%;height:100%;object-fit:contain;display:block;border-radius:9px}
+#abt .software-icons .dragonframe,#abt .software-icons .procreate{background:transparent;overflow:hidden}
+#abt .cloud-facts>section:first-child{display:flex;align-items:center;justify-content:center;gap:12px}
+#abt .cloud-content .rmit-logo{width:110px;height:auto;object-fit:contain;margin:0;flex:0 0 110px}
+#abt .cloud-facts>section:first-child p{text-align:left;margin:0}
+.about-socials{gap:20px}
+.about-socials a{background:transparent;border:0;border-radius:0;color:#e49a25;width:38px;height:38px}
+.about-socials svg{width:32px;height:32px}
+.about-socials a:hover{color:#c97518}
+@media(max-width:700px){
+ #overlay .overlay-inner .overlay-close{top:10px;left:10px;width:38px;height:38px}
+ .catalog-hero{height:72vh;min-height:460px;max-height:none}
+ .catalog-nav{position:absolute;inset:0 auto 0 0;width:92px;margin:0;padding:40px 0 100px;overflow:visible;display:flex;flex-direction:column}
+ #overlay .catalog-nav button{width:100%;flex:0 0 auto;font-size:16px;padding:13px 8px}
+ .catalog-caption{padding:25px 15px 160px 108px;gap:9px}
+ #overlay .catalog-caption strong{font-size:29px}
+ #overlay .catalog-caption small,#overlay .catalog-caption>span{font-size:17px}
+ .catalog-thumbnails{left:106px;right:12px;bottom:18px}
+ .catalog-thumbnails img{height:70px}
+ .catalog-arrows{left:7px;bottom:28px;gap:4px}
+ #overlay .catalog-arrows button{width:36px;height:38px;font-size:23px}
+ #abt .cloud-facts>section:first-child{gap:6px}
+ #abt .cloud-content .rmit-logo{width:65px;flex-basis:65px}
+ .about-socials{gap:12px}
+ .about-socials svg{width:26px;height:26px}
+}
+#overlay .catalog-mode .overlay-homebar{height:0;min-height:0;margin:0;padding:0}

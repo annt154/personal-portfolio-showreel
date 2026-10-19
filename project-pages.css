@@ -1,0 +1,109 @@
+/* Case-study layer: existing fonts, skin and navigation, calmer content rhythm. */
+#overlay .portfolio-paper {scroll-behavior:smooth;scroll-padding:24px;overscroll-behavior:contain;min-width:0}
+#overlay .overlay-inner .portfolio-study {padding:0 0 24px;color:#302d27;text-align:left;overflow-wrap:anywhere}
+#overlay .overlay-inner .portfolio-study * {box-sizing:border-box}
+#overlay .overlay-inner .portfolio-study h1,#overlay .portfolio-paper>.case-hero-title h1 {font:clamp(34px,4vw,66px)/1.15 'Biro Script',cursive;margin:0 0 16px;text-transform:none;letter-spacing:0}
+#overlay .overlay-inner .portfolio-study h2 {font:30px/1.2 'Biro Script',cursive;margin:0 0 16px;letter-spacing:0;color:inherit}
+#overlay .overlay-inner .portfolio-study h3 {font:24px/1.3 'Biro Script',cursive}
+#overlay .overlay-inner .portfolio-study :is(p,li,dd,dt,figcaption),#overlay .study-note {font:16px/1.75 'Daisy Wheel',monospace;letter-spacing:.02em}
+#overlay .overlay-inner .portfolio-study .study-copy {max-width:66ch;margin:0 0 18px;text-align:left}
+#overlay .overlay-inner .portfolio-study .study-section {margin:44px 0;padding:0;border:0;background:none;box-shadow:none}
+#overlay .overlay-inner .portfolio-study .study-heading {margin:30px 0 24px}
+#overlay .overlay-inner .portfolio-study .study-heading>p {font:24px/1.4 'Biro Script',cursive;margin:0}
+#overlay .study-info {display:grid;grid-template-columns:1fr 1fr;gap:18px 26px;margin:26px 0 40px;padding:20px 0;border-top:1px dotted #927860;border-bottom:1px dotted #927860;text-align:left}
+#overlay .study-info div {min-width:0;background:none;padding:0;overflow-wrap:anywhere}
+#overlay .study-info dt {font:12px/1.5 monospace;text-transform:uppercase;letter-spacing:.12em;color:#705844;margin-bottom:6px}
+#overlay .study-info dd {font:16px/1.7 'Daisy Wheel',monospace;margin:0}
+#overlay .overlay-inner .portfolio-study .study-note,#overlay .portfolio-paper .study-note {font:13px/1.65 monospace;color:#5e5144;max-width:70ch;padding:12px 15px;border-left:2px solid #a48c71;background:#eee4cc;margin:18px 0}
+#overlay .overlay-inner .portfolio-study .study-figure {margin:28px 0;display:block}
+#overlay .overlay-inner .portfolio-study .study-figure img {display:block;width:100%;height:auto;max-height:600px;object-fit:contain;margin:0;background:transparent;border:0;border-radius:0}
+#overlay .overlay-inner .portfolio-study .study-figure video {display:block;width:100%;max-height:600px;background:#141817}
+#overlay .overlay-inner .portfolio-study figcaption {font:12px/1.65 monospace;margin:9px 0 0;color:#5c5043;background:none!important;-webkit-text-fill-color:currentColor!important}
+#overlay .overlay-inner .portfolio-study .study-video {position:relative;aspect-ratio:16/9;background:#141817;margin:0 0 24px}
+#overlay .overlay-inner .portfolio-study .study-video iframe {position:absolute;inset:0;width:100%;height:100%;border:0}
+#overlay .overlay-inner .portfolio-study .study-video-link {margin:-12px 0 28px;font-size:13px;line-height:1.6}
+#overlay .study-pair {display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+#overlay .overlay-inner .portfolio-study a {color:var(--blog-link,#805438);text-decoration:underline;text-underline-offset:4px}
+#overlay .overlay-inner .portfolio-study a:hover {color:var(--blog-link-hover,#aa5939)}
+#overlay .overlay-inner .portfolio-study .experience-link {display:inline-block;padding:10px 17px;background:linear-gradient(110deg,#eee3ca,#daceb4);border:0;border-radius:0 14px 0 0;font:19px/1.4 'Biro Script',cursive;min-height:44px}
+#overlay .portfolio-paper :is(a,button,video):focus-visible,#overlay .portfolio-paper:focus-visible {outline:2px solid #5a577f!important;outline-offset:4px}
+#overlay .overlay-inner .portfolio-study h1:focus {outline:none}
+#overlay .overlay-inner .portfolio-study .odyssey-intro {padding:32px 0 16px}
+#overlay .overlay-inner .portfolio-study .odyssey-intro h1 {font-size:clamp(36px,4vw,64px)}
+#overlay .overlay-inner .portfolio-study .odyssey-subtitle {font:27px/1.3 'Biro Script',cursive;margin:0 0 24px}
+#overlay .overlay-inner .portfolio-study .study-eyebrow {font:11px/1.8 monospace;text-transform:uppercase;letter-spacing:.14em;margin:0 0 18px}
+#overlay .channel-sequence {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;position:relative;margin:34px 0 48px;isolation:isolate}
+#overlay .channel-sequence::before {content:'';position:absolute;left:0;right:0;top:13px;height:1px;background:linear-gradient(90deg,#ac6e87,#87976d,#788992);z-index:-1}
+#overlay .channel {min-width:0;--channel-accent:#a77988;transition:opacity .22s,transform .22s}
+#overlay .channel-2 {--channel-accent:#87936b}
+#overlay .channel-3 {--channel-accent:#7c8c92}
+#overlay .overlay-inner .portfolio-study .channel-number {display:inline-block;font:11px/1.5 monospace;padding:5px 10px;background:#e8dec5;color:#40382f;margin:0 0 16px;border-bottom:2px solid var(--channel-accent)}
+#overlay .overlay-inner .portfolio-study .channel h2 {font-size:25px;margin:18px 0 8px}
+#overlay .overlay-inner .portfolio-study .channel :is(.study-copy,.channel-type,.channel-action) {font:13px/1.6 'Daisy Wheel',monospace;margin:10px 0}
+#overlay .overlay-inner .portfolio-study .channel .channel-action {color:#68533f;font-size:12px}
+#overlay .overlay-inner .portfolio-study .channel .source-link {font:11px/1.6 monospace}
+#overlay .overlay-inner .portfolio-study .channel .study-note {font-size:11px;padding:10px}
+#overlay .experience-preview {margin:0;min-width:0}
+#overlay .channel-window {overflow:hidden;border:1px solid #ad9e85;border-radius:8px 8px 0 0;background:#faf3df;min-width:0}
+#overlay .channel-chrome {padding:7px 9px;display:flex;gap:8px;align-items:center;min-height:28px;background:linear-gradient(110deg,#e9e1d0,#d8cbb1);font:10px/1.4 monospace;white-space:nowrap;overflow:hidden;color:#52483b}
+#overlay .channel-chrome>span:last-child {overflow:hidden;text-overflow:ellipsis}
+#overlay .preview-viewport {height:auto;aspect-ratio:1200/850;position:relative;overflow:hidden;background:#f8eada;container-type:inline-size}
+#overlay .preview-viewport iframe {position:absolute;left:0;top:0;width:1200px;height:850px;max-width:none;border:0;transform-origin:0 0;transform:scale(.18);pointer-events:none}
+@supports (transform:scale(calc(100cqw / 1200px))) {
+ #overlay .preview-viewport iframe {transform:scale(calc(100cqw / 1200px))}
+}
+#overlay .preview-large {margin:24px 0 32px}
+#overlay .preview-large .preview-viewport {height:auto;aspect-ratio:1200/850}
+#overlay .channel-pending .channel-awaiting {min-height:150px;display:flex;flex-direction:column;justify-content:center;padding:20px;background:linear-gradient(135deg,#e7eadb,#d4dcd3)}
+#overlay .channel-awaiting span {font:12px monospace;letter-spacing:.12em}
+#overlay .channel-awaiting p {font:13px/1.6 'Daisy Wheel',monospace}
+#overlay .overlay-inner .portfolio-study .channel-detail,#overlay .uncanny-work {border-top:1px dotted #927860;padding-top:35px;margin-top:56px}
+#overlay .overlay-inner .portfolio-study .channel-detail-title {font-size:38px}
+#overlay .layout-study {display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:12px;margin:22px 0}
+#overlay .layout-study span {padding:30px 10px;background:linear-gradient(125deg,#e6d9ca,#d9c2c4);text-align:center;font:17px/1.5 'Biro Script',cursive;border-radius:0 15px 0 0}
+#overlay .interaction-line {display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:24px 0;font:14px/1.7 monospace}
+#overlay .study-code {overflow-x:auto;padding:22px;background:#ede7d8;color:#3a3732;border-left:2px solid #9a8172;font:12px/1.8 monospace;white-space:pre;max-width:100%}
+#overlay .study-pagination {display:flex;justify-content:space-between;gap:24px;border-top:1px dotted #927860;margin:48px 0 20px;padding:24px 0}
+#overlay .study-pagination button {flex:1;min-width:0;background:none;border:0;padding:12px 0;text-align:left;cursor:pointer;color:var(--blog-link,#805438);font:20px/1.5 'Biro Script',cursive;box-shadow:none}
+#overlay .study-pagination button:last-child {text-align:right}
+#overlay .study-pagination span {font:12px/1.6 monospace;display:block;margin-bottom:8px}
+#overlay .study-pagination strong {font:inherit;font-weight:400;text-decoration:underline;text-underline-offset:4px}
+#overlay .portfolio-paper .case-hero-title,#overlay .portfolio-paper .sun-hero-title {position:static!important;inset:auto!important;padding:26px 0!important;background:none!important;color:#332d25!important;text-shadow:none!important;pointer-events:auto}
+#overlay .portfolio-paper .case-hero-title :is(h1,span),#overlay .portfolio-paper .sun-hero-title :is(h1,span) {color:#332d25!important;text-shadow:none!important}
+#overlay .portfolio-paper .case-hero,#overlay .portfolio-paper .sun-hero {min-height:0!important;height:auto}
+/* The content has no opaque outer panel; enough plain texture remains for reading. */
+#overlay .portfolio-paper .portfolio-study {background:none}
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+ #overlay .channel-sequence:has(.channel:hover) .channel:not(:hover) {opacity:.72}
+ #overlay .channel:hover {transform:translateY(-4px)}
+}
+@media(max-width:1000px) {
+ #overlay .article-mode .blog-article:has(.portfolio-paper) {grid-template-columns:120px minmax(0,1fr) 150px;gap:18px}
+ #overlay .channel-sequence {grid-template-columns:1fr;gap:32px;padding-left:18px}
+ #overlay .channel-sequence::before {left:0;top:0;bottom:0;width:1px;height:auto;background:linear-gradient(#ac6e87,#87976d,#788992)}
+ #overlay .channel-pending .channel-awaiting {min-height:210px}
+}
+@media(max-width:750px) {
+ #overlay .article-mode .blog-article:has(.portfolio-paper) {grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);gap:12px}
+ #overlay .article-mode .blog-article:has(.portfolio-paper)>.article-rail {display:none}
+ #overlay .article-mode .blog-article:has(.portfolio-paper)>.article-index {grid-row:1;display:flex;gap:16px;width:100%;height:auto;max-height:76px!important;overflow-x:auto;overflow-y:hidden;padding:0 0 8px;align-items:center}
+ #overlay .article-mode .blog-article:has(.portfolio-paper)>.article-index .article-index-title {display:none}
+ #overlay .article-mode .blog-article:has(.portfolio-paper)>.article-index button {flex:0 0 155px;font-size:17px!important;margin:0;min-height:48px}
+ #overlay .portfolio-paper {grid-row:2;height:100%;padding:0 3px 0 0!important}
+ #overlay .channel-sequence {grid-template-columns:1fr;gap:32px;padding-left:18px}
+ #overlay .channel-sequence::before {left:0;top:0;bottom:0;width:1px;height:auto;background:linear-gradient(#ac6e87,#87976d,#788992)}
+ #overlay .preview-viewport {height:auto;aspect-ratio:1200/850}
+ #overlay .overlay-inner .portfolio-study .channel :is(.study-copy,.channel-type,.channel-action) {font-size:15px}
+ #overlay .portfolio-paper .study-info,#overlay .portfolio-paper .sun-info {grid-template-columns:1fr;gap:16px}
+ #overlay .study-pair {grid-template-columns:1fr}
+ #overlay .overlay-inner .portfolio-study :is(p,dd) {font-size:15px;line-height:1.8}
+ #overlay .overlay-inner .portfolio-study .study-section {margin:32px 0}
+ #overlay .overlay-inner .portfolio-study .odyssey-intro {padding-top:16px}
+ #overlay .layout-study {gap:7px}
+ #overlay .layout-study span {font-size:15px;padding:24px 5px}
+ #overlay .study-pagination {gap:16px}
+}
+@media(prefers-reduced-motion:reduce) {
+ #overlay .portfolio-paper {scroll-behavior:auto}
+ #overlay .channel {transition:none;transform:none!important;opacity:1!important}
+}

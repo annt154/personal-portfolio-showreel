@@ -1,0 +1,6 @@
+.checks/
+.portfolio-tools/
+node_modules/
+.env
+.env.*
+.DS_Store

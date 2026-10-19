@@ -1,0 +1,506 @@
+/* A compact personal journal on the original fish skins. */
+#overlay[data-category=animation] {--blog-base:#e7d2b5}
+#overlay[data-category=film] {--blog-base:#e3ccda}
+#overlay[data-category=graphic] {--blog-base:#ead0c9}
+#overlay[data-category=ui] {--blog-base:#c4dfe1}
+#overlay[data-category=sound] {--blog-base:#cdd8dc}
+#overlay[data-category]:not([data-category=contact]) {
+  background-color:var(--blog-base,#e7d2b5)!important;
+  background-image:none!important;
+}
+#overlay:has(.album-mode),#overlay:has(.article-mode) {
+  padding:28px 5vw 40px!important;
+  height:100dvh;overflow-y:auto!important;overflow-x:hidden!important;
+  scrollbar-color:#b9a584 #f2e9d7;
+}
+#overlay::before,#overlay::after {display:none!important}
+/* Feather only the right edge of the rotated skin; retain its original color. */
+#overlay[data-category]:not([data-category=contact]):not([data-category=showreel])::before,
+#overlay[data-category]:not([data-category=contact]):not([data-category=showreel])::after {
+  content:''!important;display:block!important;position:fixed;
+  inset:0 auto auto 0;width:100dvh;height:56.25dvh;z-index:0;opacity:1!important;
+  background:var(--desktop-skin) center/contain no-repeat!important;
+  mask-image:linear-gradient(to bottom,transparent 0%,#0002 8%,#000a 22%,#000 38%,#000 100%)!important;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#0002 8%,#000a 22%,#000 38%,#000 100%)!important;
+  filter:none!important;mix-blend-mode:normal;
+  pointer-events:none;transform-origin:top left;transform:rotate(90deg) translateY(-100%);
+}
+#overlay[data-category]:not([data-category=contact]):not([data-category=showreel])::after {display:none!important}
+#overlay .overlay-inner:is(.album-mode,.article-mode) {
+  z-index:1;
+  width:100%;max-width:1040px!important;height:auto;max-height:none;
+  min-height:calc(100dvh - 68px);display:flex;flex-direction:column;
+  padding:15px 24px 20px;box-sizing:border-box;
+  background:transparent!important;border:0!important;
+  outline:0!important;box-shadow:none!important;border-radius:0;
+}
+#overlay .overlay-inner:is(.album-mode,.article-mode)::before {display:none!important}
+.blog-links,.blog-footer,.blog-bubbles {display:none}
+:is(.album-mode,.article-mode)>.blog-links {
+  display:flex;align-items:center;gap:8px;flex:none;
+  font:12px/1.5 Georgia,serif;color:#7b6d59;
+}
+.blog-welcome {margin-left:auto;font-size:11px;font-style:italic}
+.blog-links button,.blog-footer button {
+  background:none;border:0;border-radius:0;padding:2px 0;
+  color:#625b42;font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer;
+}
+.blog-links button:hover,.blog-footer button:hover {color:#ab643f}
+.blog-links button:focus-visible,.blog-footer button:focus-visible {outline:1px dashed #725d43;outline-offset:4px}
+#overlay .overlay-inner:is(.album-mode,.article-mode)>.overlay-head {
+  position:relative!important;display:flex!important;align-items:center;justify-content:center!important;
+  flex:0 0 auto;height:auto;min-height:105px;
+  margin:4px 0 23px!important;padding:20px 65px!important;
+  background:none!important;border:0;border-bottom:3px double #bca98c;border-radius:0;
+  box-shadow:none;text-align:center!important;
+}
+#overlay .overlay-inner:is(.album-mode,.article-mode) .overlay-cat {margin:auto!important;text-align:center!important}
+#overlay .overlay-inner:is(.album-mode,.article-mode) .overlay-cat .illustrated-title {width:min(300px,60vw)!important;max-height:62px!important;margin:auto!important}
+#overlay .overlay-inner:is(.album-mode,.article-mode) .overlay-cat .illustrated-title svg {max-height:62px!important}
+#overlay .overlay-inner:is(.album-mode,.article-mode)>.overlay-head::after {display:none!important}
+#overlay .overlay-homebar {display:none!important}
+#overlay .overlay-head .blog-bubbles {display:block;position:absolute;right:9px;bottom:9px;width:45px;height:80px;object-fit:contain;pointer-events:none;opacity:.85}
+#overlay .overlay-inner:is(.album-mode,.article-mode) #ov-body {flex:1 0 auto;overflow:visible;min-height:0}
+#overlay .article-mode .blog-article {
+  grid-template-columns:130px minmax(0,1fr)160px;gap:23px;
+  height:auto;overflow:visible;align-items:start;
+}
+#overlay .article-mode .article-paper {
+  height:auto;min-height:0;overflow:visible;padding:0;border:0!important;background:transparent!important;
+}
+#overlay .article-mode :is(.article-rail,.article-index) {
+  position:sticky!important;top:18px!important;height:auto;max-height:none!important;overflow:visible;
+}
+#overlay .overlay-inner :is(.album-categories,.collection-stamps,.article-rail,.article-index) {
+  background:transparent!important;border:0!important;border-radius:0!important;
+  box-shadow:none!important;backdrop-filter:none;padding:0!important;
+}
+#overlay .overlay-inner :is(.album-categories,.collection-stamps,.article-rail,.article-index)::after {display:none!important}
+#overlay .overlay-inner :is(.album-categories h2,.collection-stamps h2,.article-rail-title,.article-index-title) {
+  position:static;margin:0 0 10px;padding:6px 8px!important;
+  background:#e8dfcd!important;border-block:1px solid #b6a485!important;border-inline:0!important;
+  border-radius:0;box-shadow:none!important;color:#66553c!important;
+  font:21px/1.2 'Biro Script',Georgia,serif!important;text-shadow:none;
+}
+#overlay .overlay-inner .article-rail .article-rail-title,
+#overlay .overlay-inner .article-index .article-index-title {min-height:34px;padding:6px 8px!important;font:21px/1.2 'Biro Script',Georgia,serif!important}
+#overlay .overlay-inner :is(.album-categories button,.article-index button) {
+  display:block;width:100%;padding:8px 4px!important;
+  background:transparent!important;border:0!important;border-bottom:1px dotted #c9bca6!important;border-radius:0!important;
+  box-shadow:none!important;color:#686344!important;-webkit-text-fill-color:currentColor!important;
+  font:14px/1.5 Georgia,serif!important;letter-spacing:0!important;text-align:left!important;
+  text-decoration:underline!important;text-underline-offset:3px;
+}
+#overlay .overlay-inner :is(.album-categories button,.article-index button)::before {display:none!important}
+#overlay .overlay-inner :is(.album-categories button,.article-index button):is(:hover,[aria-current=page],[aria-current=true]) {
+  background:#e9dfc766!important;color:#9a5239!important;box-shadow:inset 2px 0 #b79c74!important;padding-left:9px!important;
+}
+#overlay .overlay-inner .article-rail .rail-label {
+  margin:0;padding:12px 8px 2px!important;background:none!important;border:0!important;
+  font:italic 12px/1.4 Georgia,serif!important;color:#8b7960;
+}
+#overlay .overlay-inner .article-rail .rail-value {
+  margin:0;padding:0 8px 12px!important;background:none!important;border:0;border-bottom:1px dotted #ccbea8!important;
+  font:17px/1.4 'Biro Script',Georgia,serif!important;
+}
+#overlay .article-mode .article-paper>.dossier-title {position:static;background:none;padding:0 0 12px}
+#overlay .article-paper :is(.case-section,.sun-section,.dossier-entry) {
+  padding:0 0 20px;margin-top:30px;background:transparent!important;
+  border:0;border-bottom:1px dotted #c5b397;border-radius:0;box-shadow:none;
+}
+#overlay .article-paper :is(.case-section>h2,.sun-section>h2,.dossier-entry-head) {
+  margin:0 0 16px!important;padding:7px 0!important;
+  background:none!important;border:0;border-bottom:3px double #c2ad8e;border-radius:0;
+  font-size:27px!important;color:#695438!important;
+}
+#overlay .overlay-inner .article-paper :is(.case-copy,.dossier-entry-body,.dossier-entry-body p,.sun-section p) {
+  font-size:15px!important;line-height:1.85!important;letter-spacing:.02em!important;
+  text-align:left!important;color:#49483e!important;-webkit-text-fill-color:#49483e!important;
+}
+#overlay .article-paper :is(.case-information,.sun-info) {
+  padding:18px;background:#eee6d570!important;border:1px dotted #b9a180;border-radius:0;box-shadow:none;
+}
+#overlay .article-paper .case-reflection::after {display:none}
+#overlay .article-paper .case-credits::after {width:22px;height:55px;top:-15px;right:8px;transform:rotate(9deg)}
+#overlay .article-paper .sun-tarot {padding:20px;background:#17242cf5!important}
+#overlay .article-paper .sun-tarot p {color:#f4f4ed!important;-webkit-text-fill-color:#f4f4ed!important}
+#overlay .album-layout {grid-template-columns:130px minmax(0,1fr)190px;gap:23px;height:auto;max-height:none;margin-top:0;align-items:start}
+#overlay .collection-stage {padding:0!important;max-width:none;max-height:none;overflow:visible;background:none!important;border:0;border-radius:0;box-shadow:none!important}
+#overlay .collection-preview {height:390px;max-height:none;box-shadow:none;border:1px solid #a38e70;border-radius:0}
+#overlay .collection-controls {margin:14px 0 0}
+#overlay .overlay-inner.album-mode .collection-controls button {
+  padding:3px 0;background:none!important;border:0!important;border-radius:0!important;
+  box-shadow:none!important;font:14px Georgia,serif!important;text-decoration:underline;color:#686344!important;
+}
+#overlay .album-mode .collection-stamps .project-album {gap:12px;padding:0;grid-template-rows:repeat(4,minmax(0,1fr))}
+#overlay .album-mode .collection-stamps .album-card {
+  padding:5px 0;background:none!important;border:0;border-bottom:1px dotted #c9bca6;
+  border-radius:0;box-shadow:none;transform:none;
+}
+#overlay .album-mode .collection-stamps .album-card[aria-pressed=true] {outline:0;box-shadow:inset 2px 0 #b79c74;background:#eee4d280!important}
+#overlay .overlay-inner.album-mode .collection-stamps .album-card .album-caption {font:12px/1.5 Georgia,serif!important;text-decoration:underline;text-underline-offset:2px}
+#overlay .album-mode .stamp-pager {margin-top:10px;background:none!important;border-top:1px dotted #bca98c}
+:is(.album-mode,.article-mode)>.blog-footer {
+  display:flex;justify-content:center;align-items:center;gap:13px;
+  margin-top:32px;padding-top:16px;border-top:3px double #bca98c;
+  font:12px/1.8 Georgia,serif;text-align:center;color:#877559;
+}
+.blog-footer img {width:64px;height:44px;object-fit:contain;opacity:.85}
+.blog-footer p {margin:0}
+#overlay .overlay-inner .blog-footer p {font:12px/1.8 Georgia,serif!important;letter-spacing:0!important;color:#877559!important}
+/* Borderless butter-yellow thought cloud, centred over the About scene. */
+#abt>.wind-spill {left:50%;right:auto;top:43%;bottom:auto;transform:translate(-50%,-50%);width:min(780px,84vw,105dvh);height:auto;overflow:visible}
+#abt.about-revealed>.wind-spill {pointer-events:auto}
+#abt .about-cloud {
+  position:relative;left:auto;bottom:auto;width:100%;height:auto;min-height:0;max-height:none;
+  aspect-ratio:1000/700;background:none!important;padding:0!important;overflow:visible;
+  filter:none;transform:none!important;
+}
+#abt .about-cloud-image {display:block;width:100%;height:auto;aspect-ratio:1000/700;pointer-events:none}
+#abt .about-cloud,#abt.about-revealed .about-cloud {transition:opacity .2s ease,visibility .2s!important}
+#abt .about-cloud::after {display:none}
+#abt .cloud-outline,#abt .cloud-doodle {display:none}
+#abt .cloud-content {position:absolute;inset:19% 18% 19%!important;gap:12px;justify-content:flex-start;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#b7a17d transparent;background:none;border:0;padding:4px;box-sizing:border-box}
+#abt .cloud-content>* {flex-shrink:0}
+#abt .cloud-content:focus-visible {outline:1px dotted #82959e;outline-offset:3px}
+#abt .cloud-content h2 svg {width:230px;max-height:62px}
+#abt .cloud-content p,#abt .cloud-content p.cloud-bio,#abt .cloud-facts>section:first-child p,
+#abt .cloud-content .education-years,#abt .cloud-content .education-years .handwritten-number {font-size:18px!important;line-height:1.4!important}
+#abt .cloud-facts {gap:22px;margin:2px 0;grid-template-columns:1fr 1fr}
+#abt .cloud-facts>section:first-child {display:flex!important;flex-direction:column;align-items:center;gap:6px}
+#abt .cloud-facts>section:first-child p {width:100%;flex:none!important}
+#abt .cloud-content .rmit-logo {width:125px!important;max-width:100%;height:auto!important;max-height:48px;object-fit:contain;margin:0 0 5px;flex-basis:auto!important}
+#abt .cloud-content h3 {margin-bottom:5px;font-size:22px}
+#abt .cloud-content h3 .illustrated-title {max-width:120px;margin:auto}
+#abt .cloud-content .software-icons {display:grid;grid-template-columns:repeat(3,36px);gap:9px;justify-content:center}
+#abt .cloud-content .app-icon {width:36px;height:36px;font-size:22px}
+#abt .cloud-content .about-socials {display:flex;justify-content:center;gap:16px;margin:2px 0}
+@media(max-width:850px) {
+  #overlay .overlay-inner:is(.album-mode,.article-mode) {padding:12px 16px 20px}
+  #overlay .article-mode .blog-article {grid-template-columns:110px minmax(0,1fr)130px;gap:16px}
+  #overlay .album-layout {grid-template-columns:110px minmax(0,1fr)155px;gap:16px}
+  #overlay .collection-preview {height:330px}
+}
+@media(max-width:750px) {
+  #overlay:has(.album-mode),#overlay:has(.article-mode) {padding:16px 17px 30px!important}
+  #overlay .overlay-inner:is(.album-mode,.article-mode) {height:auto;max-height:none;min-height:calc(100dvh - 46px);padding:12px}
+  .blog-welcome {display:none}
+  #overlay .overlay-inner:is(.album-mode,.article-mode)>.overlay-head {min-height:85px;height:auto;padding:15px 35px!important;margin-bottom:20px!important}
+  #overlay .overlay-head .blog-bubbles {width:26px;height:55px;right:0}
+  #overlay .article-mode .blog-article {display:flex;flex-direction:column;gap:24px}
+  #overlay .article-mode .article-paper {width:100%;padding:0;order:0}
+  #overlay .article-mode .article-rail {display:none!important}
+  #overlay .article-mode .article-index {display:block!important;position:static!important;width:100%;order:1}
+  #overlay .album-layout {grid-template-columns:minmax(0,1fr);gap:23px}
+  #overlay .album-layout .album-categories {display:flex;flex-wrap:wrap;gap:3px 12px;height:auto!important;max-height:none!important;grid-column:1;grid-row:auto}
+  #overlay .album-categories h2 {width:100%;box-sizing:border-box}
+  #overlay .overlay-inner.album-mode .album-categories button {width:auto;padding:5px 0!important;font-size:13px!important}
+  #overlay .collection-stage {grid-column:1;grid-row:auto}
+  #overlay .collection-preview {height:350px;max-height:none}
+  #overlay .album-mode .collection-stamps {grid-column:1;grid-row:auto;height:auto!important;max-height:none!important;overflow:visible!important}
+  #overlay .album-mode .collection-stamps .project-album {grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto;gap:12px;overflow:visible!important}
+  #overlay .album-mode .collection-stamps .album-card {grid-template-columns:1fr;gap:7px}
+  #overlay .album-mode .collection-stamps .album-photo img {height:auto;aspect-ratio:16/10;object-fit:cover}
+  #overlay .overlay-inner.album-mode .collection-stamps .album-card .album-caption {font-size:12px!important}
+}
+/* Each control or entry is a small glass bubble, not a boxed column. */
+#overlay {--bubble-fill:linear-gradient(180deg,#ffffffbd 0%,#ffffff48 44%,#ffffff14 52%,#ffffff73 100%);--bubble-shadow:inset 0 1px 2px #fff,inset 0 -2px 4px #ffffff80,0 2px 5px #5b51451c}
+#overlay .overlay-inner :is(.album-categories,.collection-stamps,.article-rail,.article-index),#overlay .collection-stage {
+  background:none!important;border:0!important;box-shadow:none!important;backdrop-filter:none;padding:0!important;
+}
+#overlay .album-mode :is(.album-categories,.collection-stamps) {height:auto!important;max-height:none!important;overflow:visible!important}
+#overlay .overlay-inner :is(.album-categories button,.article-index button,.album-card,.blog-note),
+#overlay .overlay-inner.album-mode .collection-controls button,
+#overlay .stamp-pager button {
+  background:var(--bubble-fill)!important;border:1px solid #ffffffda!important;
+  border-radius:13px!important;box-shadow:var(--bubble-shadow)!important;backdrop-filter:blur(2px);
+}
+#overlay .overlay-inner :is(.album-categories button,.article-index button) {padding:10px 12px!important;margin:0 0 10px;text-decoration:none!important;box-sizing:border-box}
+#overlay .overlay-inner :is(.album-categories button,.article-index button):is(:hover,[aria-current=page],[aria-current=true]) {
+  background:linear-gradient(#fffdf5db,#e6d5ad70 52%,#fff8e6bc)!important;box-shadow:var(--bubble-shadow)!important;
+}
+#overlay .overlay-inner :is(.album-categories h2,.collection-stamps h2,.article-rail-title,.article-index-title) {
+  background:none!important;border:0!important;box-shadow:none!important;margin-bottom:10px;
+}
+#overlay .album-mode .collection-stamps .project-album {display:grid;grid-template-rows:none;grid-auto-rows:auto;gap:12px;overflow:visible!important}
+#overlay .album-mode .collection-stamps .album-card {padding:9px!important;transform:none;min-height:78px}
+#overlay .album-mode .collection-stamps .album-card[aria-pressed=true] {background:linear-gradient(#ffffffe0,#f1dfb96b,#ffffffa6)!important;outline:1px dotted #9b805c;outline-offset:2px}
+#overlay .overlay-inner.album-mode .collection-controls button {padding:7px 17px!important;min-width:80px;text-decoration:none}
+#overlay .stamp-pager {border:0!important;padding-top:5px}
+#overlay .stamp-pager button {padding:5px 12px}
+#overlay .blog-note {margin-bottom:12px;overflow:hidden}
+#overlay .overlay-inner .blog-note .rail-value {border:0!important}
+#overlay .article-paper :is(.case-section,.sun-section,.dossier-entry) {padding:0 0 20px;background:none!important;border:0!important;box-shadow:none!important;backdrop-filter:none}
+#overlay .article-paper :is(.case-section>h2,.sun-section>h2,.dossier-entry-head) {border-bottom:1px dotted #b59d79}
+#overlay .article-paper :is(.case-information,.sun-info) {padding:18px 20px;background:var(--bubble-fill)!important;border:1px solid #fffd;border-radius:15px;box-shadow:var(--bubble-shadow)}
+#overlay .collection-preview {border:1px solid #fffe;border-radius:13px;box-shadow:0 0 0 4px #ffffff35,inset 0 1px #fff;overflow:hidden}
+#overlay .article-paper .sun-tarot {background:#17242ce8!important}
+/* Scene-local birds slide with the beach; only their handwritten labels are links. */
+.scene>.shore-nav {position:absolute;left:3%;bottom:4.5%;display:flex;align-items:flex-end;gap:30px;z-index:35}
+.shore-item {display:flex;flex-direction:column;align-items:center;gap:4px}
+.shore-caption {font:20px/1.3 'Biro Script',cursive!important;letter-spacing:.015em;color:#fff!important;background:none!important;border:0;padding:0;text-decoration:none;cursor:pointer;-webkit-text-stroke:.35px #292329;paint-order:stroke fill;text-shadow:0 1px 2px #29232955}
+.shore-caption:hover {text-decoration:underline;text-underline-offset:4px}
+.shore-caption:focus-visible {outline:2px dotted #fff;outline-offset:5px}
+.shore-bird {display:block;height:100px;width:auto;overflow:visible;filter:drop-shadow(0 4px 2px #372b3420);transition:translate .2s}
+.shore-pigeon {width:85px}.shore-pair {width:155px;height:82px}
+.shore-item:has(.shore-pigeon) {position:relative;top:-18px}
+#abt>.shore-nav {left:auto;right:4%;bottom:6%}
+.shore-item:has(.shore-caption:hover) .shore-bird {translate:0 -4px}
+#abt>.shore-nav .shore-bird {transform:scaleX(-1)}
+body:has(#overlay.open) .shore-nav {visibility:hidden}
+@media(prefers-reduced-motion:reduce) {.shore-bird {transition:none}}
+@media(max-width:750px),(max-height:680px) {
+  #abt>.wind-spill {top:40%;width:min(780px,90vw,105dvh)}
+  #abt .cloud-content {gap:10px;padding:3px}
+  #abt .cloud-content h2 svg {width:170px;max-height:40px}
+  #abt .cloud-content p,#abt .cloud-content p.cloud-bio,#abt .cloud-facts>section:first-child p,
+  #abt .cloud-content .education-years,#abt .cloud-content .education-years .handwritten-number {font-size:14px!important;line-height:1.35!important}
+  #abt .cloud-facts {grid-template-columns:1fr;gap:14px}
+  #abt .cloud-content .app-icon {width:30px;height:30px;font-size:19px}
+  #abt .cloud-content .software-icons {grid-template-columns:repeat(3,30px)}
+  #abt .about-cloud::after {width:14px;height:14px}
+  #overlay .article-paper :is(.case-section,.sun-section,.dossier-entry) {padding:15px}
+}
+@media(max-width:750px) {
+  #overlay[data-category]:not([data-category=contact]):not([data-category=showreel])::before {width:100dvh;height:56.25dvh}
+  #overlay[data-category]:not([data-category=contact]):not([data-category=showreel])::after {display:none!important}
+  #overlay .overlay-inner.album-mode .album-categories button {padding:7px 11px!important;margin-bottom:5px}
+  .scene>.shore-nav {left:3%;bottom:3%;gap:16px}
+  .shore-pigeon {width:58px;height:68px}.shore-pair {width:100px;height:55px}
+  .shore-caption {font-size:17px!important}
+}
+/* One coherent opaque palette per fish skin, shared by every small frame. */
+#overlay {--frame-light:var(--chrome-light,#fff2d8);--frame-mid:var(--chrome-mid,#eac693);--frame-bottom:var(--chrome-light,#fff2d8);--bubble-fill:linear-gradient(var(--frame-light),var(--frame-mid) 52%,var(--frame-bottom));--bubble-shadow:inset 0 1px 2px #fff,inset 0 -2px 3px var(--chrome-mid),0 2px 4px #5b51451c}
+#overlay .overlay-inner :is(.album-categories button,.article-index button,.album-card,.blog-note) {background:var(--bubble-fill)!important;backdrop-filter:none!important;border-color:var(--chrome-edge)!important;color:var(--chrome-ink)!important;-webkit-text-fill-color:var(--chrome-ink)!important}
+#overlay .overlay-inner :is(.album-categories button,.article-index button):is(:hover,[aria-current=page],[aria-current=true]),
+#overlay .album-mode .collection-stamps .album-card[aria-pressed=true] {background:linear-gradient(var(--frame-light),var(--frame-mid) 52%,var(--frame-bottom))!important;outline:1px dotted #846e54;outline-offset:2px;filter:brightness(1.04)}
+#overlay .overlay-inner.album-mode .collection-controls button {background:var(--bubble-fill)!important;backdrop-filter:none;border-color:var(--chrome-edge)!important;color:var(--chrome-ink)!important}
+#overlay .overlay-inner.album-mode .collection-controls button:last-child {background:var(--bubble-fill)!important}
+#overlay .overlay-inner .blog-note :is(.rail-label,.rail-value) {color:#423b32!important;-webkit-text-fill-color:#423b32!important}
+/* The category heading stays at the top-left when an article scrolls. */
+#overlay .overlay-inner:is(.album-mode,.article-mode)>.overlay-head {
+  position:sticky!important;top:0;z-index:15;justify-content:flex-start!important;text-align:left!important;
+  min-height:78px;padding:12px 0 0!important;background:var(--blog-base,#e7d2b5)!important;
+  border-bottom:3px double var(--chrome-edge);border-radius:0;
+  box-shadow:0 -24px 0 24px var(--blog-base);
+}
+#overlay .overlay-inner:is(.album-mode,.article-mode) .overlay-masthead {
+  align-items:flex-start;align-self:flex-end;width:fit-content;max-width:100%;
+  padding:8px 20px 7px!important;background:var(--bubble-fill)!important;
+  border:1px solid var(--chrome-edge)!important;border-bottom:0!important;border-radius:12px 12px 0 0;
+  box-shadow:inset 0 1px 2px #fff;
+}
+#overlay .overlay-inner:is(.album-mode,.article-mode) .overlay-cat,
+#overlay .overlay-inner:is(.album-mode,.article-mode) .overlay-cat .illustrated-title {margin:0!important;text-align:left!important}
+#overlay .overlay-inner:is(.album-mode,.article-mode) .overlay-cat .illustrated-title {width:min(310px,67vw)!important;max-height:58px!important}
+#overlay .overlay-inner:is(.album-mode,.article-mode) .overlay-cat .illustrated-title svg {max-height:58px!important}
+#overlay .article-mode .dossier-back,#overlay .article-mode .project-playlist-link {display:none!important}
+/* Playlist: fixed stage and categories; only the right-hand thumbnail list scrolls. */
+#overlay:has(.album-mode) {padding:18px 4vw!important;overflow:hidden!important}
+#overlay .overlay-inner.album-mode {height:calc(100dvh - 36px);min-height:0;max-height:none;padding:10px 14px;overflow:hidden}
+#overlay .overlay-inner.album-mode>.overlay-head {position:relative!important;flex:0 0 76px;min-height:0;margin:0 0 16px!important;box-sizing:border-box}
+#overlay .overlay-inner.album-mode #ov-body {flex:1 1 0;min-height:0;overflow:hidden}
+#overlay .album-mode .album-layout {height:100%;min-height:0;grid-template-columns:130px minmax(0,1fr)190px;grid-template-rows:minmax(0,1fr);gap:22px;margin:0;overflow:hidden}
+#overlay .album-mode .collection-stage {display:flex;flex-direction:column;height:100%;min-height:0;overflow:hidden}
+#overlay .album-mode .collection-preview {flex:1 1 0;height:auto!important;min-height:0;max-height:none}
+#overlay .album-mode .collection-controls {flex:none;margin:12px 0 2px}
+#overlay .album-mode .album-categories {height:auto!important;max-height:100%!important;overflow:hidden!important}
+#overlay .album-mode .collection-stamps {display:block;height:100%!important;max-height:100%!important;min-height:0;overflow-y:auto!important;overflow-x:hidden!important;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#ad9273 transparent;padding:0 5px 10px!important;box-sizing:border-box}
+#overlay .album-mode .collection-stamps h2 {position:sticky;top:0;z-index:3;background:var(--blog-base)!important;padding:8px!important}
+#overlay .album-mode .collection-stamps .project-album {display:grid;grid-template-columns:1fr;grid-template-rows:none;grid-auto-rows:auto;height:auto;max-height:none;flex:none;gap:12px;overflow:visible!important}
+#overlay .album-mode>.blog-footer {display:none}
+#overlay .skin-aware-ink :is(span,a,strong,em) {-webkit-text-fill-color:inherit!important;color:inherit!important}
+/* Biro throughout the playlist; the feature and left panel share a compact height. */
+#overlay .overlay-inner.album-mode :is(.album-categories button,.album-card .album-caption,.collection-controls button,.collection-caption strong,.collection-caption>span,.collection-stamps h2,.album-categories h2) {font-family:'Biro Script',cursive!important;font-weight:400!important}
+#overlay .overlay-inner.album-mode .collection-stamps .album-card .album-caption {font:18px/1.35 'Biro Script',cursive!important;text-decoration:none}
+@media(min-width:751px) {
+  #overlay .album-mode .album-layout {--playlist-frame-height:min(360px,calc(100dvh - 230px));grid-template-columns:150px minmax(0,500px)210px;justify-content:start;align-items:start}
+  #overlay .album-mode .album-categories {height:var(--playlist-frame-height)!important;display:flex;flex-direction:column;gap:7px}
+  #overlay .album-mode .album-categories h2 {flex:none;margin-bottom:0}
+  #overlay .overlay-inner.album-mode .album-categories button {flex:1;min-height:0;margin:0;padding:6px 12px!important;font-size:20px!important}
+  #overlay .album-mode .collection-stage {height:auto;max-height:100%;overflow:visible}
+  #overlay .album-mode .collection-preview {height:var(--playlist-frame-height)!important;flex:none;width:100%}
+  #overlay .album-mode .collection-stamps {height:var(--playlist-frame-height)!important;max-height:100%!important}
+  #overlay .album-mode .collection-caption strong {font-size:33px}
+}
+@media(max-width:750px) {
+  #overlay:has(.album-mode) {padding:10px!important}
+  #overlay .overlay-inner.album-mode {height:calc(100dvh - 20px);padding:8px;min-height:0}
+  #overlay .overlay-inner.album-mode>.overlay-head {flex-basis:62px;min-height:0;margin-bottom:9px!important}
+  #overlay .album-mode .album-layout {grid-template-columns:minmax(0,1fr)100px;grid-template-rows:auto minmax(0,1fr);gap:12px}
+  #overlay .album-mode .album-categories {grid-column:1/-1;grid-row:1;display:flex;gap:5px 8px;flex-wrap:wrap}
+  #overlay .album-mode .album-categories h2 {display:none}
+  #overlay .overlay-inner.album-mode .album-categories button {font-size:12px!important;padding:6px 9px!important;margin:0;width:auto}
+  #overlay .album-mode .collection-stage {grid-column:1;grid-row:2}
+  #overlay .album-mode .collection-stamps {grid-column:2;grid-row:2}
+  #overlay .album-mode .collection-stamps .album-card {grid-template-columns:1fr;min-height:0;padding:6px!important}
+  #overlay .album-mode .collection-stamps .album-card .album-caption {font-size:11px!important}
+  #overlay .album-mode .collection-caption strong {font-size:25px}
+  #overlay .album-mode .collection-caption>span {font-size:14px}
+  #overlay .overlay-inner.album-mode .collection-controls button {min-width:0;padding:6px 10px!important;font-size:12px!important}
+}
+@media(max-height:600px) and (min-width:751px) {
+  #overlay .overlay-inner.album-mode>.overlay-head {flex-basis:54px;margin-bottom:8px!important}
+  #overlay .overlay-inner.album-mode .album-categories button {padding:6px 10px!important;margin-bottom:7px}
+}
+/* Final layout: steady header and rails, with one independently scrolling article. */
+@font-face {font-family:'Blog Symbols';src:url('assets/fonts/Handwriting.ttf') format('truetype');font-display:swap;unicode-range:U+0021-0040,U+005B-0060,U+007B-007E,U+2000-206F,U+2190-21FF}
+#overlay .overlay-inner :is(.article-index button,.album-categories button,.album-card .album-caption,.rail-label,.rail-value,.collection-controls button),
+#overlay .overlay-inner.album-mode .collection-stamps .album-card .album-caption {font-family:'Blog Symbols','Biro Script',cursive!important}
+#overlay .overlay-inner .article-index button {font-size:19px!important;line-height:1.45!important}
+#overlay .overlay-inner .handwritten-number,#abt .cloud-content .handwritten-number {font-family:'Handwriting Full',cursive!important;font-size:inherit!important;font-weight:400!important}
+.shore-item:has(.shore-pigeon) {top:-28px}
+#abt>.shore-nav {flex-direction:row-reverse}
+.shore-caption {font-family:'Blog Symbols','Biro Script',cursive!important;-webkit-text-stroke:.8px #4a3b36;text-shadow:0 1px 2px #342d28,0 0 4px #342d2840}
+.shore-bird {transform-origin:50% 95%;animation:shore-wiggle 4.8s ease-in-out infinite;transition:scale .25s ease,translate .25s ease}
+.shore-pair {animation-delay:-2.2s}
+.shore-item:hover .shore-bird,.shore-item:focus-within .shore-bird {scale:1.07;translate:0 -3px}
+@keyframes shore-wiggle {0%,100%{rotate:-1deg}50%{rotate:1.3deg}}
+#abt .cloud-content {overflow:visible!important;display:block;inset:18% 16% 20%!important;padding:0}
+#abt .cloud-layout {position:absolute;left:50%;top:50%;transform-origin:center;display:flex;flex-direction:column;gap:9px;box-sizing:border-box}
+#abt .cloud-layout>* {flex:none}
+#abt .cloud-content h2 {margin:0!important;line-height:1!important}
+#abt .cloud-content h2 .illustrated-title {display:block;width:190px!important;height:auto!important;max-height:none!important;margin:0 auto!important;overflow:visible!important}
+#abt .cloud-content h2 svg {width:100%!important;height:auto!important;max-height:none!important;overflow:visible}
+#abt .cloud-content p,#abt .cloud-content p.cloud-bio,#abt .cloud-facts>section:first-child p {font-size:16px!important;line-height:1.3!important}
+#abt .cloud-facts {grid-template-columns:1.35fr 1fr!important;gap:18px;margin:0;align-items:center}
+#abt .cloud-facts>section:first-child {display:grid!important;grid-template-columns:85px minmax(0,1fr);gap:10px;align-items:center;text-align:left}
+#abt .cloud-content .rmit-logo {width:85px!important;max-width:85px!important;margin:0!important}
+#abt .cloud-content .education-years,#abt .cloud-content .education-years .handwritten-number {font-size:16px!important}
+#abt .cloud-content h3 .illustrated-title {max-width:95px}
+#abt .cloud-content .software-icons {grid-template-columns:repeat(3,29px)!important;gap:7px}
+#abt .cloud-content .app-icon {width:29px!important;height:29px!important;font-size:18px!important}
+#abt .cloud-content .about-socials {gap:18px;margin:2px 0 0}
+#abt .about-socials a {width:26px;height:26px}
+#abt .about-socials svg {width:100%;height:100%}
+#overlay .contact-socials {display:flex;justify-content:center;gap:24px;padding:22px 0;margin-top:18px;border-top:1px dotted currentColor}
+#overlay .contact-socials a {display:block;width:32px;height:32px;color:#aa803a;transition:transform .2s}
+#overlay .contact-socials svg {display:block;width:100%;height:100%;fill:currentColor}
+#overlay .contact-socials a:hover {transform:translateY(-3px)}
+#overlay .contact-socials a:focus-visible {outline:2px dotted currentColor;outline-offset:5px}
+#overlay .overlay-inner:is(.album-mode,.article-mode) {max-width:1180px!important}
+#overlay .overlay-inner:is(.album-mode,.article-mode)>.overlay-head {
+  display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;
+  position:relative!important;top:auto!important;flex:0 0 74px;min-height:0;height:74px;
+  padding:6px 0!important;margin:0 0 17px!important;
+  background:transparent!important;box-shadow:none!important;border:0;border-bottom:1px solid #b59d7960;
+}
+#overlay .overlay-inner:is(.album-mode,.article-mode) .overlay-masthead {
+  position:static!important;align-self:center!important;align-items:flex-start!important;flex:0 0 auto!important;
+  margin:0 auto 0 0!important;padding:0!important;inset:auto!important;transform:none!important;
+  background:none!important;border:0!important;box-shadow:none!important;border-radius:0;
+}
+#overlay .overlay-inner:is(.album-mode,.article-mode) .overlay-cat {position:static!important;margin:0!important;float:none!important;transform:none!important}
+#overlay:has(.article-mode) {padding:18px 4vw!important;height:100dvh;overflow:hidden!important}
+#overlay .overlay-inner.article-mode {height:calc(100dvh - 36px);min-height:0;max-height:none;padding:10px 14px;overflow:hidden}
+#overlay .overlay-inner.article-mode #ov-body {flex:1 1 0;min-height:0;overflow:hidden}
+#overlay .article-mode .blog-article {display:grid;grid-template-columns:155px minmax(0,1fr)215px;gap:26px;height:100%;min-height:0;overflow:hidden;align-items:stretch}
+#overlay .article-mode .article-paper {height:100%;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;padding:0 12px 30px;scrollbar-width:thin;scrollbar-color:var(--chrome-edge) transparent;scroll-padding-top:12px}
+#overlay .article-mode :is(.article-rail,.article-index) {position:relative!important;top:auto!important;height:100%;min-height:0;max-height:100%!important;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--chrome-edge) transparent;padding:2px 4px 16px!important;box-sizing:border-box}
+#overlay .article-mode>.blog-footer {display:none}
+@media(min-width:751px) {
+  #overlay .album-mode .album-layout {--playlist-frame-height:min(410px,calc(100dvh - 220px));grid-template-columns:155px minmax(0,1fr)230px;gap:26px;justify-content:stretch}
+}
+@media(max-width:750px) {
+  #overlay:has(.article-mode) {padding:10px!important}
+  #overlay .overlay-inner.article-mode {height:calc(100dvh - 20px);padding:8px}
+  #overlay .overlay-inner:is(.album-mode,.article-mode)>.overlay-head {height:62px;flex-basis:62px;margin-bottom:10px!important}
+  #overlay .article-mode .blog-article {grid-template-columns:minmax(0,1fr)105px;gap:12px}
+  #overlay .article-mode .article-index {width:auto;order:initial}
+  #overlay .article-mode .article-paper {padding:0 4px 25px;order:initial}
+  #overlay .overlay-inner .article-index button {font-size:16px!important;padding:8px!important}
+  .shore-item:has(.shore-pigeon) {top:-22px}
+}
+@media(prefers-reduced-motion:reduce) {
+  .shore-bird {animation:none;transition:none}
+  #overlay .contact-socials a {transition:none}
+}
+/* Small linked entries and social text, like an early personal homepage. */
+.shore-link {display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;color:inherit;cursor:pointer}
+.shore-link:focus-visible {outline:2px dotted #fff;outline-offset:6px}
+.shore-link:hover .shore-caption {text-decoration:underline;text-underline-offset:4px}
+.shore-item:has(.shore-pigeon) {top:-34px}
+#abt .cloud-content {inset:15% 16% 18%!important}
+#abt .cloud-layout {gap:10px}
+#abt .cloud-content .rmit-logo {background:transparent!important;mix-blend-mode:multiply;box-shadow:none!important;border:0!important}
+#abt .cloud-content .software-icons {grid-template-columns:repeat(3,35px)!important;gap:8px}
+#abt .cloud-content .app-icon {width:35px!important;height:35px!important;font-size:22px!important}
+#abt .cloud-content .about-socials {margin:12px 0 0;gap:17px;flex-wrap:wrap;justify-content:center}
+#abt .cloud-content .about-socials a {
+  display:block;width:28px!important;height:28px!important;padding:0;background:none;border:0;
+  color:#d49c3b;text-decoration:none;
+}
+#abt .cloud-content .about-socials a:hover {color:#936139}
+#overlay .contact-socials {justify-content:flex-start;flex-wrap:wrap;gap:12px 23px;margin:0 0 23px;padding:0 0 14px;border:0;border-bottom:1px dotted #839a6b}
+#overlay .contact-socials a {display:block;width:30px;height:30px;color:#4f743e;text-decoration:none;transform:none}
+#overlay .contact-socials a:hover {color:#294d28;transform:none}
+#overlay .overlay-inner :is(.album-categories button,.article-index button,.album-card),
+#overlay .overlay-inner :is(.album-categories button,.article-index button):is(:hover,[aria-current=page],[aria-current=true]),
+#overlay .album-mode .collection-stamps .album-card[aria-pressed=true] {
+  background:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;backdrop-filter:none!important;
+  text-decoration:underline!important;text-underline-offset:3px;outline:0;filter:none;
+}
+#overlay .overlay-inner :is(.album-categories button,.article-index button) {padding:8px 3px!important;margin-bottom:6px;color:var(--chrome-ink)!important}
+#overlay .overlay-inner :is(.album-categories button,.article-index button):hover {color:#8d5135!important;-webkit-text-fill-color:#8d5135!important}
+#overlay .overlay-inner :is(.album-categories button,.article-index button):focus-visible,
+#overlay .album-mode .collection-stamps .album-card:focus-visible {outline:1px dashed var(--chrome-ink);outline-offset:3px}
+#overlay .overlay-inner .article-index button {display:grid;grid-template-columns:32px minmax(0,1fr);gap:9px;align-items:start;text-align:left!important}
+#overlay .article-index .entry-mini {display:block;width:32px;height:28px;object-fit:cover;border:1px solid var(--chrome-edge);padding:1px;background:var(--chrome-light);box-sizing:border-box;margin-top:4px}
+#overlay .article-index .entry-caption {min-width:0;overflow-wrap:anywhere;font:inherit!important}
+#overlay .album-mode .collection-stamps .album-card {grid-template-columns:38px minmax(0,1fr);gap:10px;min-height:50px;padding:7px 3px!important}
+#overlay .album-mode .collection-stamps .album-photo {width:38px;padding:0;border:1px solid var(--chrome-edge)!important}
+#overlay .album-mode .collection-stamps .album-photo img {width:36px;height:32px!important;aspect-ratio:auto;object-fit:cover}
+#overlay .overlay-inner.album-mode .collection-stamps .album-card .album-caption {text-decoration:underline;text-underline-offset:3px}
+#overlay .overlay-inner.album-mode .album-categories button {flex:0 0 auto}
+#overlay .overlay-inner .blog-note {background:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;margin-bottom:9px}
+#overlay .overlay-inner .blog-note .rail-label {padding:7px 3px 1px!important}
+#overlay .overlay-inner .blog-note .rail-value {padding:0 3px 8px!important;border-bottom:1px dotted var(--chrome-edge)!important}
+#overlay .article-mode .article-rail .blog-note {background:none!important;border:0!important;box-shadow:none!important;border-radius:0!important}
+#overlay .overlay-inner .album-categories button,
+#overlay .overlay-inner .blog-note .rail-link {color:#546f8a!important;-webkit-text-fill-color:#546f8a!important;text-decoration:underline!important;text-underline-offset:3px;font:inherit}
+#overlay .overlay-inner .album-categories button:hover,
+#overlay .overlay-inner .blog-note .rail-link:hover {color:#825378!important;-webkit-text-fill-color:#825378!important}
+#overlay .overlay-inner .blog-note .rail-link:focus-visible {outline:1px dotted currentColor;outline-offset:3px}
+#overlay .contact-socials {justify-content:center}
+/* Shared framed headings and link colours sampled from each skin palette. */
+#overlay[data-category=animation] {--blog-link:#805438;--blog-link-hover:#aa5939}
+#overlay[data-category=film] {--blog-link:#76526f;--blog-link-hover:#994678}
+#overlay[data-category=graphic] {--blog-link:#914e55;--blog-link-hover:#ad4f4e}
+#overlay[data-category=ui] {--blog-link:#316978;--blog-link-hover:#214c61}
+#overlay[data-category=sound] {--blog-link:#496574;--blog-link-hover:#294552}
+#overlay .overlay-inner .album-categories button,
+#overlay .overlay-inner .article-index button,
+#overlay .overlay-inner .collection-stamps .album-card,
+#overlay .overlay-inner .collection-stamps .album-card .album-caption,
+#overlay .overlay-inner .blog-note .rail-link {color:var(--blog-link,var(--chrome-ink))!important;-webkit-text-fill-color:var(--blog-link,var(--chrome-ink))!important}
+#overlay .overlay-inner .album-categories button:hover,
+#overlay .overlay-inner .article-index button:hover,
+#overlay .overlay-inner .collection-stamps .album-card:hover .album-caption,
+#overlay .overlay-inner .blog-note .rail-link:hover {color:var(--blog-link-hover,var(--chrome-ink))!important;-webkit-text-fill-color:var(--blog-link-hover,var(--chrome-ink))!important}
+#overlay .overlay-inner .album-categories h2,
+#overlay .overlay-inner .collection-stamps h2,
+#overlay .overlay-inner .article-rail .article-rail-title,
+#overlay .overlay-inner .article-index .article-index-title {
+  box-sizing:border-box;min-height:38px;width:100%;margin:0 0 13px;padding:7px 10px!important;
+  background:linear-gradient(110deg,color-mix(in srgb,var(--blog-base) 80%,var(--chrome-light)),color-mix(in srgb,var(--blog-base) 75%,var(--chrome-mid)))!important;
+  border:0!important;outline:0!important;
+  border-radius:0 18px 0 0;box-shadow:none!important;backdrop-filter:none!important;text-shadow:none!important;
+  color:var(--chrome-ink)!important;font:22px/1.2 'Biro Script',cursive!important;
+  text-align:center;justify-content:center;
+}
+#overlay .overlay-inner .album-categories button .handwritten-number,
+#overlay .overlay-inner .article-index button .handwritten-number,
+#overlay .overlay-inner .collection-stamps .album-caption .handwritten-number {
+  font-family:'Handwriting Full','Blog Symbols',cursive!important;font-size:inherit!important;
+  font-style:normal!important;font-weight:400!important;letter-spacing:0;
+}
+@media(max-width:750px) {
+  .shore-item:has(.shore-pigeon) {top:-27px}
+  #overlay .overlay-inner .article-index button {grid-template-columns:23px minmax(0,1fr);gap:5px}
+  #overlay .article-index .entry-mini {width:23px;height:23px}
+  #overlay .album-mode .collection-stamps .album-card {grid-template-columns:1fr;gap:5px}
+}
+
+/* Shift the complete collection/detail layout, including its header, to the right. */
+#overlay:has(.album-mode),#overlay:has(.article-mode){padding-left:9vw!important;padding-right:3vw!important}
+@media(max-width:750px){#overlay:has(.album-mode),#overlay:has(.article-mode){padding-left:18px!important;padding-right:10px!important}}

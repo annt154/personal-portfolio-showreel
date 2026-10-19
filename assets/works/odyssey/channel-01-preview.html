@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><base href="https://annt154.github.io/assignment2/"><style>* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} /* apply for whole page */
+
+header {
+  /* styling header*/
+  color: #fff8e3;
+  font-family: Calibri, "Trebuchet MS", sans-serif;
+  font-size: larger;
+}
+
+body {
+  /* styling body*/
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  display: flex; /* Use flex for vertical layout */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Center content horizontally */
+  background: hsl(329, 100%, 81%);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.main {
+  width: 100%;
+  margin: 30px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-bar {
+  flex: 1;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.container {
+  flex: 30;
+  margin: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.music-player {
+  width: 500px;
+  height: 550px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 40px 100px rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  overflow: z;
+  color: #fff8e3;
+}
+
+.playlist {
+  /* styling playlist sec*/
+  width: 400px;
+  height: 550px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 40px 100px rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  overflow: z;
+  color: #fff8e3;
+  font-family: Calibri, "Trebuchet MS", sans-serif;
+  flex: 50;
+  margin: 15px;
+  margin-left: 0;
+}
+
+h2 {
+}
+
+.track-name {
+  width: 999px;
+  height: 450px;
+  margin: 15px;
+  border-radius: 20px;
+  background: hsl(329, 100%, 82%);
+  box-shadow: 0 40px 100px rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  overflow: z;
+  color: #fff8e3;
+}
+
+.icon:hover {
+  cursor: pointer;
+}
+
+/* edit font and alignment */
+.music-name {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 1px;
+}
+.artist-name {
+  font-size: 20px;
+}
+
+.disk {
+  /* editing the spinning sec */
+  position: relative;
+  display: block;
+  margin: 40px auto;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background-image: url("images/cover\ 1.jpg");
+  background-size: cover;
+  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.08); /* thin shad for the disk */
+  animation: rotate 20s linear infinite; /* animate rotation for the disk */
+  animation-play-state: paused; /* the default play state off the disk is pausing */
+}
+
+.disk.play {
+  /* Spin when playing */
+  animation-play-state: running;
+}
+
+.disk::before {
+  /* Center dot of the disk in the center */
+  content: ""; /* Generate pseudo element */
+  position: absolute; /* Absolute inside .disk */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: hsl(329, 100%, 81%);
+}
+
+.song-slider {
+  /* styling seekbar + time labels */
+  width: 100%;
+  position: relative;
+}
+
+.seek-bar {
+  -webkit-appearance: none; /* Remove default WebKit look */
+  width: 100%;
+  height: 5px;
+  border-radius: 10px;
+  background: hsl(316, 100%, 88%);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.seek-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1px;
+  height: 20px;
+  background: #fffaae;
+  box-shadow: -400px 0 0 400px hsl(330, 100%, 75%);
+}
+
+.current-time,
+.song-duration {
+  font-size: 14px;
+}
+
+.song-duration {
+  position: absolute;
+  right: 0;
+}
+
+.controls {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.play-button {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: hsl(316, 100%, 88%);
+  cursor: pointer;
+  border: none;
+}
+
+.play-button span {
+  /* Bars used to form icons */
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 30px;
+  border-radius: 2px;
+  background: hsl(330, 100%, 81%);
+  transition: 0.5s;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.play-button span:nth-child(2) {
+  /* Second bar position */
+  left: 55%;
+  transform-origin: center;
+}
+
+.play-button.pause span:nth-child(2) {
+  transform: translateY(-50%) scaleY(0);
+}
+
+.play-button.pause span:nth-child(1) {
+  /* Turn first bar into triangle */
+  width: 35%;
+  left: 53%;
+  transform: translate(-50%, -50%);
+  border-radius: 0;
+  clip-path: polygon(0 0, 100% 50%, 100% 50%, 0% 100%);
+}
+
+.play-button.pause {
+  animation: pulse 2s linear infinite;
+}
+
+@keyframes pulse {
+  /* Keyframes for play butt  */
+  0% {
+    box-shadow: 0;
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.4);
+  }
+}
+
+.button {
+  width: 40px;
+  height: 40px;
+  background: hsl(316, 100%, 88%);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  color: #fff8e3;
+}
+
+@keyframes rotate {
+  /* rotate animate */
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.playlist ol li {
+  cursor: pointer; /* Clickable */
+  margin-bottom: 10px;
+  transition: opacity 0.3s ease; /* Smooth hover */
+}
+
+.playlist ol li.inactive {
+  /* Currently playing track */
+  opacity: 0.4; /* visible range */
+  pointer-events: none;
+}
+
+.track-name {
+  width: 99%;
+  height: 20%;
+}
+/* styling when hover in a song in playlist, the opacity change*/
+.playlist ol li {
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: opacity 0.3s ease, font-weight 0.3s ease;
+
+  opacity: 0.5;
+  font-weight: normal;
+}
+
+.playlist ol li.active-track {
+  opacity: 1 !important;
+  font-weight: bold;
+  color: #fffcd1;
+  text-decoration: underline;
+}
+
+.playlist ol li:not(.active-track):hover {
+  opacity: 1;
+}
+ .music-btn{display:none} *,*::before,*::after{animation:none!important;pointer-events:none!important} body{overflow:hidden} </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Album</title>
+    
+    
+    
+  </head>
+  <body>
+      <!-- make id for audio to map in jvscrpt -->
+      
+
+    <!-- Header Section -->
+    <header>
+      <h1>Music Album</h1>
+    </header>
+    
+    <!-- Navigation Section -->
+  <div class="main"> 
+    <nav class="nav-bar">
+      <img class="icon" src="home-icon.png"/>
+      <img class="icon" src="music-icon.png"/>
+      <img class="icon" src="playlist-icon.png"/>
+    </nav>
+
+    <!-- Main Content Section: media player sec-->
+    <main class="container">
+      <!-- Media Player Section -->
+    <!-- create a template to map the song to -->
+      <div class="music-player">
+        <h1 class="music-name">DryDown</h1>
+        <p class="artist-name">p-hase ft. Ben Snaath</p>
+    <!-- a div section for the disk spinning -->
+        <div class="disk" style="background-image:url(1.jpg)"></div>
+
+     <div class="song-slider"> <!-- a section for seekbar -->
+     <input type="range" value="0" class="seek-bar">
+     <!--Displays played time/total duration-->
+     <span class="current-time">00:00</span>
+     <span class="song-duration">00:00</span>
+      </div>
+
+      <div class="controls"> <!-- set up play/pause button -->
+        <button class="button backward-button"><img src="2.png" alt=""></button>
+        <button class="play-button pause">
+          <span></span>
+          <span></span>
+        </button>
+        <button class="button forward-button"><img src="3.png" alt=""></button>
+        <button class="button mute-button">
+          <img src="volume-up.png" alt="Volume" id="volume-icon">
+        </button>
+      </div>
+      </main>
+
+      <!-- Playlist section -->
+      <div class = playlist>
+        <h2>Playlist</h2> <!-- Making list of songs -->
+          <ol> 
+            <li class="track-name" data-index="0">DryDown</li>
+            <li class="track-name" data-index="1">Hes</li>
+            <li class="track-name" data-index="2">Leapt</li>
+            <li class="track-name" data-index="3">Water Feature</li>
+          </ol>
+      </div>
+  </div> 
+
+    <!-- Footer Section -->
+    <footer> <!-- a footer to show what I used for the web -->
+      <p>&copy; 2024 Media Player Website. All rights reserved.</p> </div>
+      <a href="https://icons8.com/icon/59862/play">Play</a> icon by
+      <a href="https://icons8.com">Icons8</a>
+      <a href="https://icons8.com/icon/61012/pause">Pause</a> icon by
+      <a href="https://icons8.com">Icons8</a>
+      <a href="h9c51ecca9d9c891ea757919d51958f60.jpg">Icons8</a> images by
+      <a href="https://www.pinterest.com/nhduong1978/pins/">Image4</a>
+      <a href="https://www.pinterest.com/pin/754493743866012140/">Image5</a>
+      <a href="https://www.pinterest.com/pin/754493743866004210/">Image1</a>
+       <a href="https://www.pinterest.com/pin/754493743866012431/">Image6</a>
+    </footer>
+
+    
+    
+  </body>
+</html>

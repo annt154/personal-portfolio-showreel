@@ -1,0 +1,48 @@
+/* Paper menu panels inspired by the supplied personal-blog reference. */
+#overlay .overlay-inner:is(.album-mode,.article-mode){--menu-paper:#faf9f0;--menu-rule:#b4ad98;--menu-tape:var(--chrome-mid,#c5dce0)}
+#overlay .overlay-inner:is(.album-mode,.article-mode) :is(.album-categories,.collection-stamps,.article-rail,.article-index){
+ background:linear-gradient(105deg,#fffffff0,#faf8efe8)!important;
+ border:1px solid #b8b19b!important;border-radius:0!important;
+ padding:15px 11px 12px!important;box-shadow:3px 3px 0 #8c84651a!important;
+ position:relative;
+}
+#overlay .overlay-inner:is(.album-mode,.article-mode) :is(.album-categories h2,.collection-stamps h2,.article-rail-title,.article-index-title){
+ position:relative;width:calc(100% + 12px);margin:-3px -6px 16px!important;min-height:38px;
+ background:repeating-linear-gradient(135deg,#ffffffad 0 4px,transparent 4px 9px),var(--menu-tape)!important;
+ border:0!important;border-radius:0!important;padding:9px 5px!important;
+ font:22px/1.25 'Biro Script',cursive!important;letter-spacing:.035em!important;
+ color:#514c42!important;box-shadow:none!important;
+}
+#overlay .overlay-inner:is(.album-mode,.article-mode) :is(.album-categories h2,.collection-stamps h2,.article-rail-title,.article-index-title)::after{display:none!important}
+#overlay .overlay-inner:is(.album-mode,.article-mode) :is(.album-categories button,.article-index button){
+ border:0!important;border-bottom:1px dotted #b4ad98!important;background:none!important;
+ border-radius:0!important;margin:0!important;padding:12px 4px!important;
+ color:#4f5048!important;-webkit-text-fill-color:currentColor!important;text-decoration:none!important;
+ box-shadow:none!important;line-height:1.4!important;
+}
+#overlay .overlay-inner:is(.album-mode,.article-mode) .album-categories button{display:flex;align-items:center;justify-content:space-between;gap:6px;width:100%;text-align:left!important}
+#overlay .overlay-inner:is(.album-mode,.article-mode) .album-categories button::after{content:'›';font:22px Georgia,serif;color:#7c806e}
+#overlay .overlay-inner:is(.album-mode,.article-mode) :is(.album-categories button,.article-index button):is(:hover,[aria-current=page],[aria-current=true]){background:#e6e9db9c!important;color:var(--blog-link)!important;-webkit-text-fill-color:currentColor!important}
+#overlay .album-mode .collection-stamps .album-card{padding:10px 3px!important;border-bottom:1px dotted #b4ad98!important}
+#overlay .album-mode .collection-stamps .album-card[aria-pressed=true]{background:#e6e9db9c!important}
+#overlay .overlay-inner .collection-stamps .album-caption{text-decoration:none!important}
+#overlay .overlay-inner .article-index .entry-mini{background:#fff!important;padding:2px;border:1px solid #c8c3af;width:32px;height:32px;box-shadow:1px 2px 0 #514b3c12}
+#overlay .overlay-inner:is(.album-mode,.article-mode) .stamp-pager{border-top:1px dashed #b4ad98!important;background:none!important;padding-top:10px}
+#overlay .overlay-inner:is(.album-mode,.article-mode) .collection-stage{padding:12px!important;background:#faf9f0e8!important;border:1px solid #b8b19b!important;box-shadow:3px 3px 0 #8c84651a!important;border-radius:0!important}
+#overlay .overlay-inner:is(.album-mode,.article-mode) .collection-stage::before{display:none!important}
+#overlay .overlay-inner:is(.album-mode,.article-mode) .collection-controls button{border:1px solid #ccc5b0!important;border-radius:14px!important;background:linear-gradient(#fffef9,#eeecdf)!important;color:#57594e!important;box-shadow:1px 2px 0 #8c84651a!important}
+#overlay .overlay-inner:is(.album-mode,.article-mode) .overlay-close{
+ width:90px!important;height:58px!important;min-width:64px;min-height:44px;padding:0!important;
+ font-size:0!important;background:transparent url('assets/hello/spiral-back.svg') center/contain no-repeat!important;
+ border:0!important;border-radius:0!important;box-shadow:none!important;opacity:.9;
+}
+#overlay .overlay-inner:is(.album-mode,.article-mode) .overlay-close:hover{opacity:1;transform:translateX(-3px)}
+#overlay .overlay-inner:is(.album-mode,.article-mode) :is(button,a):focus-visible{outline:2px dotted #5c6e74!important;outline-offset:3px}
+@media(max-width:750px){
+ #overlay .overlay-inner:is(.album-mode,.article-mode) .overlay-close{width:65px!important;height:45px!important}
+ #overlay .overlay-inner.album-mode .album-categories{gap:0 14px!important}
+ #overlay .overlay-inner.album-mode .album-categories h2{flex-basis:100%}
+ #overlay .overlay-inner.album-mode .album-categories button{width:auto;padding:10px 5px!important}
+ #overlay .overlay-inner .article-index .entry-mini{width:23px;height:23px}
+}
+@media(prefers-reduced-motion:reduce){#overlay .overlay-close:hover{transform:none!important}}

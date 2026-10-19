@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" fill="none">
+  <defs><filter id="pencil" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".055" numOctaves="3" seed="8" result="grain"/><feDisplacementMap in="SourceGraphic" in2="grain" scale="2.6" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+  <g transform="translate(500 0) scale(-1 1)" stroke-linecap="round" stroke-linejoin="round" filter="url(#pencil)">
+    <path d="M166 116 C150 99 145 138 173 141 C216 149 233 107 211 83 C181 49 126 74 118 119 C106 185 191 194 229 163 C289 111 238 22 183 22 C101 17 29 95 16 164 C-6 257 119 270 239 263 C329 260 409 248 476 244 M421 207 C443 221 463 239 482 244 C459 253 440 266 423 281" stroke="#4a4a45" stroke-width="5"/>
+    <path d="M167 115 C151 101 147 137 173 139 C215 147 230 108 209 84 C179 52 128 75 120 120 C109 182 190 191 227 161 C285 110 237 25 183 24 C102 20 32 95 19 165 C-3 253 119 267 240 260 C330 257 410 246 476 244 M423 209 L480 244 L425 279" stroke="#a7aaa0" stroke-width="1.5" opacity=".75"/>
+  </g>
+</svg>

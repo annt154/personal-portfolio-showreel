@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+ <title id="title">The Odyssey — three channels</title><desc id="desc">A schematic connecting music playback, a dress-up interaction and a third channel awaiting confirmation.</desc>
+ <rect width="1200" height="750" fill="#e8dfca"/>
+ <g fill="#4d443a" font-family="Georgia,serif"><text x="80" y="130" font-size="58">The Odyssey</text><text x="80" y="180" font-size="25">Three Channels of Digital Interaction</text></g>
+ <path d="M80 320H1120" fill="none" stroke="#a38c77"/>
+ <g font-family="monospace" font-size="18" fill="#4d443a"><text x="85" y="292">01 / MUSIC</text><text x="455" y="292">02 / INTERACTION</text><text x="825" y="292">03 / COMING SOON</text></g>
+ <g stroke="#a38c77" fill="#d9bfc1"><rect x="80" y="350" width="300" height="230" rx="8"/><path d="M80 380H380"/></g>
+ <g stroke="#a38c77" fill="#d5d8be"><rect x="450" y="350" width="300" height="230" rx="8"/><path d="M450 380H750"/></g>
+ <g stroke="#a38c77" fill="#cbd6d3"><rect x="820" y="350" width="300" height="230" rx="8"/><path d="M820 380H1120"/></g>
+ <circle cx="230" cy="478" r="68" fill="#3d3535"/><circle cx="230" cy="478" r="23" fill="#b68d9e"/><circle cx="230" cy="478" r="5" fill="#e8dfca"/>
+ <path d="M565 435L583 425Q600 449 617 425L635 435L658 470L638 488L629 471V537H571V471L562 488L542 470Z" fill="#f0e9d2" stroke="#8c9375"/>
+ <g font-family="monospace" fill="#4d443a"><text x="919" y="487" font-size="40">···</text><text x="80" y="665" font-size="18">Click · Play · Explore / Drag · Drop · Undo</text></g>
+</svg>
