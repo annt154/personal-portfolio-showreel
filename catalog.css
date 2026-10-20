@@ -38,7 +38,9 @@
 .about-socials a:hover{transform:translateY(-3px)}
 .about-socials svg{width:22px;height:22px;fill:currentColor}
 .showreel-space{min-height:45vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff8e5a0;border:1px solid #a88c61}
-.showreel-space>span{font-size:70px;color:#92794d}
+.showreel-space>iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#080a08}
+.showreel-space>p{margin:14px}
+.showreel-space a{color:#785b33}
 @media(max-width:700px){
  #overlay .blog-article{column-gap:16px}
  #overlay .article-body{padding-inline:0}

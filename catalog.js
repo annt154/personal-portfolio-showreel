@@ -138,7 +138,7 @@ showreelLink.onclick = () => {
   overlay.dataset.category = 'showreel';
   overlay.querySelector('.overlay-inner').className = 'overlay-inner showreel-mode';
   document.getElementById('ov-cat').textContent = 'Showreel';
-  document.getElementById('ov-body').innerHTML = '<section class="showreel-space"><span aria-hidden="true">▷</span><p>Showreel coming soon</p></section>';
+  document.getElementById('ov-body').innerHTML = '<section class="showreel-space"><iframe src="https://www.youtube-nocookie.com/embed/w_qmGMNLBh0" title="An — Showreel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p><a href="https://youtu.be/w_qmGMNLBh0" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></p></section>';
   overlay.classList.add('open'); overlay.scrollTop = 0;
 };
 document.querySelector('.corner-nav').prepend(showreelLink);
